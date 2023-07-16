@@ -1,4 +1,4 @@
-const result = "Microsoft (R) Windows Script Host Version 5.812
+const result = `Microsoft (R) Windows Script Host Version 5.812
 Copyright (C) Microsoft Corporation. All rights reserved.
 
 
@@ -36162,5 +36162,5 @@ Status
 Time submitted 05/24/2023 20:04:47
 Total pages 1
 
-Number of print jobs enumerated 1644";
+Number of print jobs enumerated 1644";`
 
