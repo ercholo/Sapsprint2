@@ -1,9 +1,19 @@
+/*
+    Rutas de usuarios / Auth
+    host + /api/auth
+*/
+
 const {Router} = require('express');
 const router = Router();
-
-//
+const {crearUsuario, loginUsuario, revalidarToken} = require('../controllers/auth');
 const basicAuth = require('express-basic-auth'),
   AD = require('activedirectory');
+
+router.post('/new', crearUsuario);
+
+router.post('/', loginUsuario);
+
+router.get('/renew', revalidarToken);
 
 function myAsyncAuthorizer(username, password, cb) {
   var ad = new AD(global.config.ldap);
@@ -24,14 +34,6 @@ module.exports = function (app) {
       authorizeAsync: true,
       challenge: true
     }))
-}
-
-
-router.get('/', (req, res) => {
-    res.json({
-        ok: true
-            })
-});
-
+};
 
 module.exports = router;

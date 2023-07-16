@@ -1,6 +1,8 @@
 const express = require('express');
+const { exec } = require('child_process');
+
 require('dotenv').config();
-console.log(process.env)
+//console.log(process.env)
 
 
 
@@ -12,7 +14,9 @@ const app = express();
 //Directorio público.
 app.use(express.static('public'));
 
+// Lectura y parseo del body
 
+app.use(express.json());
 
 //Rutas
 // app.get('/', (req, res) => {
