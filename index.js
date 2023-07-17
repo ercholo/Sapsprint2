@@ -1,11 +1,14 @@
 const express = require('express');
-const { exec } = require('child_process');
-
 require('dotenv').config();
+const { dbConnection } = require('./database/config');
 //console.log(process.env)
 
 //Crear servidor Express
 const app = express();
+
+//Base de datos
+dbConnection();
+
 
 //Directorio público.
 app.use(express.static('public'));
