@@ -36162,5 +36162,18 @@ Status
 Time submitted 05/24/2023 20:04:47
 Total pages 1
 
-Number of print jobs enumerated 1644";`
+Number of print jobs enumerated 1644`
 
+
+
+const result2 = `Microsoft (R) Windows Script Host versi�n 5.812
+Copyright (C) Microsoft Corporation. Reservados todos los derechos.
+
+
+N�mero de trabajos de impresi�n enumerados 0
+
+`
+const regex = /\d+$/g;
+
+const trabajosImpresion = result.replace(/\r\n/g, '').match(regex);
+console.log(trabajosImpresion);

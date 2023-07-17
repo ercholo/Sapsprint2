@@ -4,12 +4,8 @@ const { exec } = require('child_process');
 require('dotenv').config();
 //console.log(process.env)
 
-
-
 //Crear servidor Express
 const app = express();
-
-
 
 //Directorio público.
 app.use(express.static('public'));
@@ -28,7 +24,6 @@ app.use(express.json());
 //TODO: auth // crear, login, renew
 app.use('/api/auth', require('./routes/auth'));
 //TODO: CRUD: Eventos
-
 
 //Escuchar peticiones
 app.listen(process.env.PORT, () => {
