@@ -22,7 +22,7 @@ const trabajos = (printer) =>{
             if (parseInt(result[0]) > 500) { 
                 resolve("+500");
             }; 
-             
+            
             resolve(result[0]);
         });
         
@@ -30,8 +30,5 @@ const trabajos = (printer) =>{
     
 };
 
-
-const resultInfo = trabajos('local').then((value => console.log(value)))
-console.log('final '+resultInfo)
 
 module.exports = trabajos;

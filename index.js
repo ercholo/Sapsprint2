@@ -17,15 +17,10 @@ app.use(express.static('public'));
 
 app.use(express.json());
 
-//Rutas
-// app.get('/', (req, res) => {
-//     res.json({
-//         ok: true
-//     })
-// });
-
 //TODO: auth // crear, login, renew
 app.use('/api/auth', require('./routes/auth'));
+app.use('/impresoras', require('./routes/impresoras'));
+
 //TODO: CRUD: Eventos
 
 //Escuchar peticiones
