@@ -7,7 +7,7 @@ const { dbConnection } = require('./database/config');
 const app = express();
 
 //Base de datos
-dbConnection();
+//dbConnection();
 
 
 //Directorio público.
