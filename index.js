@@ -1,6 +1,4 @@
 const express = require('express');
-const { exec } = require('child_process');
-
 require('dotenv').config();
 //console.log(process.env)
 
