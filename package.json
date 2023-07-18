@@ -16,6 +16,8 @@
     "express": "^4.18.2",
     "express-basic-auth": "^1.2.1",
     "express-validator": "^7.0.1",
+    "mogoose": "^0.0.1-security",
+    "mongoose": "^7.3.4",
     "nodemon": "^3.0.1",
     "winston": "^3.10.0"
   }
