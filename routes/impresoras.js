@@ -2,11 +2,11 @@ const {Router} = require('express');
 const router = Router();
 const {response } = require('express');
 const trabajos = require('../devuelveTrabajos');
-const numeroPeticiones = 0;
+let numeroPeticiones = 0;
 
 router.get('/', async (req, res = response) => {
 
-    let promesa = trabajos('local');
+    let promesa = trabajos('\\\\ctxprinter\\01SIPRO01');
 
     promesa.then((valor) => {
         res.json({ numeroDeTrabajos: parseInt(valor)});

@@ -14,8 +14,6 @@ const trabajos = (printer) => {
     return result[0];
 };
 
-const resultInfo = trabajos('local');
+const resultInfo = trabajos('\\\\ctxprinter\\01SIPRO01');
 
 console.log(resultInfo);
-
-module.exports = trabajos;
