@@ -15,8 +15,12 @@ import FirstPageIcon from '@mui/icons-material/FirstPage';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import LastPageIcon from '@mui/icons-material/LastPage';
+import SelectAutoWidth from './selectAlmacen'
+import SelectAutoWidthTipoPapel from './selectTipoPapel';
+
 
 function TablePaginationActions(props) {
+    console.log(props)
   const theme = useTheme();
   const { count, page, rowsPerPage, onPageChange } = props;
 

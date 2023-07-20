@@ -10,7 +10,7 @@ export default function SelectAutoWidth() {
   const handleChange = (event) => {
     setAlmacen(event.target.value);
   };
-
+console.log("almacen "+almacen)
   return (
     <div>
       <FormControl sx={{ m: 1, minWidth: 180 }}>
@@ -21,7 +21,7 @@ export default function SelectAutoWidth() {
           value={almacen}
           onChange={handleChange}
           autoWidth
-          label="Age"
+          label="selecAlmacen"
         >
           <MenuItem value={0}>Todes</MenuItem>
           <MenuItem value={16}>Tortosa</MenuItem>
