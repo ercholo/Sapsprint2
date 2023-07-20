@@ -77,29 +77,43 @@ TablePaginationActions.propTypes = {
   rowsPerPage: PropTypes.number.isRequired,
 };
 
-function createData(name, calories, fat) {
-  return { name, calories, fat };
+function createData(nameImpresora, numTrabajos, numAlmacen) {
+  return { nameImpresora, numTrabajos, numAlmacen };
 }
 
 const rows = [
-  createData('Cupcake', 305, 3.7),
-  createData('Donut', 452, 25.0),
-  createData('Eclair', 262, 16.0),
-  createData('Frozen yoghurt', 159, 6.0),
-  createData('Gingerbread', 356, 16.0),
-  createData('Honeycomb', 408, 3.2),
-  createData('Ice cream sandwich', 237, 9.0),
-  createData('Jelly Bean', 375, 0.0),
-  createData('KitKat', 518, 26.0),
-  createData('Lollipop', 392, 0.2),
-  createData('Marshmallow', 318, 0),
-  createData('Nougat', 360, 19.0),
-  createData('Oreo', 437, 18.0),
-].sort((a, b) => (a.calories < b.calories ? -1 : 1));
+  createData('Impresoras', 'Trabajos', 'Almacén', 'Tipo'),
+  createData('16ALAV101', 0, 'RG16', 'papel'),
+  createData('16ALAV102', 0, 'RG16', 'papel'),
+  createData('16ALAV201', 0, 'RG16', 'papel'),
+  createData('16ALAV202', 0, 'RG16', 'papel'),
+  createData('16ALDEV01', 0, 'RG16', 'papel'),
+  createData('16ALETQ01', 0, 'RG16', 'etiqueta'),
+  createData('16ALETQ02', 0, 'RG16', 'etiqueta'),
+  createData('16ALETQ03', 0, 'RG16', 'etiqueta'),
+  createData('16ALEXP01', 0, 'RG16', 'papel'),
+  createData('16ALJEF01', 0, 'RG16', 'papel'),
+  createData('17ADCOM01', 0, 'RG17', 'papel'),
+  createData('17ALAV101', 0, 'RG17', 'papel'),
+  createData('17ALAV102', 0, 'RG17', 'papel'),
+  createData('17ALDEV01', 0, 'RG17', 'papel'),
+  createData('17ALGVO01', 0, 'RG17', 'papel'),
+  createData('17ALJEF01', 0, 'RG17', 'papel'),
+  createData('17ATTOM01', 0, 'RG17', 'papel'),
+  createData('18ALAV101', 0, 'RG18', 'papel'),
+  createData('18ALAV102', 0, 'RG18', 'papel'),
+  createData('18ALAV201', 0, 'RG18', 'papel'),
+  createData('18ALAV202', 0, 'RG18', 'papel'),
+  createData('18ALETQ01', 0, 'RG18', 'etiqueta'),
+  createData('18ALETQ02', 0, 'RG18', 'etiqueta'),
+  createData('18ALETQ03', 0, 'RG18', 'etiqueta'),
+  createData('18ALEXP01', 0, 'RG18', 'papel'),
+  createData('18ALJEF01', 0, 'RG18', 'papel'),
+]//.sort((a, b) => (a.calories < b.calories ? -1 : 1));
 
 export default function CustomPaginationActionsTable() {
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
@@ -116,21 +130,21 @@ export default function CustomPaginationActionsTable() {
 
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
+      <Table sx={{ minWidth: 600 }} aria-label="custom pagination table">
         <TableBody>
           {(rowsPerPage > 0
             ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             : rows
           ).map((row) => (
-            <TableRow key={row.name}>
+            <TableRow key={row.nameImpresora}>
               <TableCell component="th" scope="row">
-                {row.name}
+                {row.nameImpresora}
+              </TableCell>
+              <TableCell style={{ width: 760 }} align="right">
+                {row.numTrabajos}
               </TableCell>
               <TableCell style={{ width: 160 }} align="right">
-                {row.calories}
-              </TableCell>
-              <TableCell style={{ width: 160 }} align="right">
-                {row.fat}
+                {row.numAlmacen}
               </TableCell>
             </TableRow>
           ))}
@@ -143,7 +157,7 @@ export default function CustomPaginationActionsTable() {
         <TableFooter>
           <TableRow>
             <TablePagination
-              rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
+              rowsPerPageOptions={[10, 15, 25, { label: 'All', value: -1 }]}
               colSpan={3}
               count={rows.length}
               rowsPerPage={rowsPerPage}
