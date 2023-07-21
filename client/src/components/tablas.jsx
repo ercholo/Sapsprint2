@@ -15,12 +15,12 @@ import FirstPageIcon from '@mui/icons-material/FirstPage';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import LastPageIcon from '@mui/icons-material/LastPage';
-import SelectAutoWidth from './selectAlmacen'
-import SelectAutoWidthTipoPapel from './selectTipoPapel';
+import {SelectAlmacen} from './selectAlmacen';
+import {SelectTipoPapel} from './selectTipoPapel';
 
 
 function TablePaginationActions(props) {
-    console.log(props)
+
   const theme = useTheme();
   const { count, page, rowsPerPage, onPageChange } = props;
 
@@ -118,6 +118,9 @@ const rows = [
 export default function CustomPaginationActionsTable() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [almacen, setAlmacen] = React.useState('');
+  const [papel, setPapel] = React.useState('');
+  
 
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
@@ -132,7 +135,21 @@ export default function CustomPaginationActionsTable() {
     setPage(0);
   };
 
+  console.log("tablas "+almacen)
+  console.log("tablasPapel "+papel)
+  
   return (
+    <>
+    <div className="flexbox">
+      <SelectAlmacen 
+        almacen={almacen}
+        setAlmacen={setAlmacen}
+      />
+      <SelectTipoPapel 
+        papel={papel}
+        setPapel={setPapel}
+      />
+    </div>    
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 600 }} aria-label="custom pagination table">
         <TableBody>
@@ -180,5 +197,7 @@ export default function CustomPaginationActionsTable() {
         </TableFooter>
       </Table>
     </TableContainer>
+    </>
   );
 }
+

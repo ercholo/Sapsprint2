@@ -3,14 +3,17 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import PropTypes from 'prop-types';
 
-export default function SelectAutoWidth() {
-  const [almacen, setAlmacen] = React.useState('');
+export const SelectAlmacen = ({almacen, setAlmacen}) => {
+  // const [almacen, setAlmacen] = React.useState('');
 
   const handleChange = (event) => {
     setAlmacen(event.target.value);
   };
-console.log("almacen "+almacen)
+
+  console.log("almacen " + almacen)
+  
   return (
     <div>
       <FormControl sx={{ m: 1, minWidth: 180 }}>
@@ -23,12 +26,15 @@ console.log("almacen "+almacen)
           autoWidth
           label="selecAlmacen"
         >
-          <MenuItem value={0}>Todes</MenuItem>
-          <MenuItem value={16}>Tortosa</MenuItem>
-          <MenuItem value={17}>Melilla</MenuItem>
-          <MenuItem value={18}>Granada</MenuItem>
+          <MenuItem value={"todos"}>Todes</MenuItem>
+          <MenuItem value={"tortosa"}>Tortosa</MenuItem>
+          <MenuItem value={"melilla"}>Melilla</MenuItem>
+          <MenuItem value={"granada"}>Granada</MenuItem>
         </Select>
       </FormControl>
     </div>
   );
 }
+SelectAlmacen.propTypes = {
+  almacen: PropTypes.string
+};

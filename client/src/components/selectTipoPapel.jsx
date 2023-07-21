@@ -3,12 +3,13 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import PropTypes from 'prop-types';
 
-export default function SelectAutoWidthTipoPapel() {
-  const [age, setAge] = React.useState('');
+export const SelectTipoPapel = ({papel, setPapel}) => {
+  //const [papel, setPapel] = React.useState('');
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+    setPapel(event.target.value);
   };
 
   return (
@@ -18,16 +19,19 @@ export default function SelectAutoWidthTipoPapel() {
         <Select
           labelId="seleccionarTipoPapel"
           id="seleccionarTipoPapel"
-          value={age}
+          value={papel}
           onChange={handleChange}
           autoWidth
           label="Tipo"
         >
-          <MenuItem value={0}>Todes</MenuItem>
-          <MenuItem value={21}>Papel</MenuItem>
-          <MenuItem value={22}>Etiquetas</MenuItem>
+          <MenuItem value={"todos"}>Todes</MenuItem>
+          <MenuItem value={"papel"}>Papel</MenuItem>
+          <MenuItem value={"etiquetas"}>Etiquetas</MenuItem>
         </Select>
       </FormControl>
     </div>
   );
 }
+SelectTipoPapel.propTypes = {
+  papel: PropTypes.string
+};
