@@ -81,38 +81,38 @@ TablePaginationActions.propTypes = {
   rowsPerPage: PropTypes.number.isRequired,
 };
 
-function createData(nameImpresora, numTrabajos, numAlmacen) {
-  return { nameImpresora, numTrabajos, numAlmacen };
+function createData(nameImpresora, numTrabajos, numAlmacen, tipo, hidden) {
+  return { nameImpresora, numTrabajos, numAlmacen, tipo, hidden };
 }
 
 const rows = [
-  createData('Impresoras', 'Trabajos', 'Almacén', 'Tipo'),
-  createData('16ALAV101', 0, 'RG16', 'papel'),
-  createData('16ALAV102', 0, 'RG16', 'papel'),
-  createData('16ALAV201', 0, 'RG16', 'papel'),
-  createData('16ALAV202', 0, 'RG16', 'papel'),
-  createData('16ALDEV01', 0, 'RG16', 'papel'),
-  createData('16ALETQ01', 0, 'RG16', 'etiqueta'),
-  createData('16ALETQ02', 0, 'RG16', 'etiqueta'),
-  createData('16ALETQ03', 0, 'RG16', 'etiqueta'),
-  createData('16ALEXP01', 0, 'RG16', 'papel'),
-  createData('16ALJEF01', 0, 'RG16', 'papel'),
-  createData('17ADCOM01', 0, 'RG17', 'papel'),
-  createData('17ALAV101', 0, 'RG17', 'papel'),
-  createData('17ALAV102', 0, 'RG17', 'papel'),
-  createData('17ALDEV01', 0, 'RG17', 'papel'),
-  createData('17ALGVO01', 0, 'RG17', 'papel'),
-  createData('17ALJEF01', 0, 'RG17', 'papel'),
-  createData('17ATTOM01', 0, 'RG17', 'papel'),
-  createData('18ALAV101', 0, 'RG18', 'papel'),
-  createData('18ALAV102', 0, 'RG18', 'papel'),
-  createData('18ALAV201', 0, 'RG18', 'papel'),
-  createData('18ALAV202', 0, 'RG18', 'papel'),
-  createData('18ALETQ01', 0, 'RG18', 'etiqueta'),
-  createData('18ALETQ02', 0, 'RG18', 'etiqueta'),
-  createData('18ALETQ03', 0, 'RG18', 'etiqueta'),
-  createData('18ALEXP01', 0, 'RG18', 'papel'),
-  createData('18ALJEF01', 0, 'RG18', 'papel'),
+  createData('Impresoras', 'Trabajos', 'Almacén', 'Tipo', false),
+  createData('16ALAV101', 0, 'RG16', 'papel', true),
+  createData('16ALAV102', 0, 'RG16', 'papel', false),
+  createData('16ALAV201', 0, 'RG16', 'papel', false),
+  createData('16ALAV202', 0, 'RG16', 'papel', false),
+  createData('16ALDEV01', 0, 'RG16', 'papel', false),
+  createData('16ALETQ01', 0, 'RG16', 'etiqueta', false),
+  createData('16ALETQ02', 0, 'RG16', 'etiqueta', false),
+  createData('16ALETQ03', 0, 'RG16', 'etiqueta', false),
+  createData('16ALEXP01', 0, 'RG16', 'papel', false),
+  createData('16ALJEF01', 0, 'RG16', 'papel', false),
+  createData('17ADCOM01', 0, 'RG17', 'papel', false),
+  createData('17ALAV101', 0, 'RG17', 'papel', false),
+  createData('17ALAV102', 0, 'RG17', 'papel', false),
+  createData('17ALDEV01', 0, 'RG17', 'papel', false),
+  createData('17ALGVO01', 0, 'RG17', 'papel', false),
+  createData('17ALJEF01', 0, 'RG17', 'papel', false),
+  createData('17ATTOM01', 0, 'RG17', 'papel', false),
+  createData('18ALAV101', 0, 'RG18', 'papel', false),
+  createData('18ALAV102', 0, 'RG18', 'papel', false),
+  createData('18ALAV201', 0, 'RG18', 'papel', false),
+  createData('18ALAV202', 0, 'RG18', 'papel', false),
+  createData('18ALETQ01', 0, 'RG18', 'etiqueta', false),
+  createData('18ALETQ02', 0, 'RG18', 'etiqueta', false),
+  createData('18ALETQ03', 0, 'RG18', 'etiqueta', false),
+  createData('18ALEXP01', 0, 'RG18', 'papel', false),
+  createData('18ALJEF01', 0, 'RG18', 'papel', false),
 ]//.sort((a, b) => (a.calories < b.calories ? -1 : 1));
 
 export default function CustomPaginationActionsTable() {
@@ -120,7 +120,7 @@ export default function CustomPaginationActionsTable() {
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [almacen, setAlmacen] = React.useState('');
   const [papel, setPapel] = React.useState('');
-  
+  const [isHidden, setHidden] = React.useState(false);
 
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
@@ -137,6 +137,7 @@ export default function CustomPaginationActionsTable() {
 
   console.log("tablas "+almacen)
   console.log("tablasPapel "+papel)
+  console.log((rowsPerPage > 0 ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) : rows  ))
   
   return (
     <>
@@ -157,7 +158,7 @@ export default function CustomPaginationActionsTable() {
             ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             : rows
           ).map((row) => (
-            <TableRow key={row.nameImpresora}>
+            <TableRow key={row.nameImpresora} hover={true}>
               <TableCell component="th" scope="row">
                 {row.nameImpresora}
               </TableCell>
@@ -200,4 +201,3 @@ export default function CustomPaginationActionsTable() {
     </>
   );
 }
-
