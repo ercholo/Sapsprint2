@@ -23,7 +23,7 @@ export const SelectTipoPapel = ({papel, setPapel}) => {
           autoWidth
           label="Tipo"
         >
-          <MenuItem value={"todos"}>Todes</MenuItem>
+          {/* <MenuItem value={"todos"}>Todes</MenuItem> */}
           <MenuItem value={"papel"}>Papel</MenuItem>
           <MenuItem value={"etiquetas"}>Etiquetas</MenuItem>
         </Select>

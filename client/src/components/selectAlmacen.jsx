@@ -24,10 +24,10 @@ export const SelectAlmacen = ({almacen, setAlmacen}) => {
           autoWidth
           label="selecAlmacen"
         >
-          <MenuItem value={"todos"}>Todes</MenuItem>
-          <MenuItem value={"tortosa"}>Tortosa</MenuItem>
-          <MenuItem value={"melilla"}>Melilla</MenuItem>
-          <MenuItem value={"granada"}>Granada</MenuItem>
+          {/* <MenuItem value={"todos"}>Todes</MenuItem> */}
+          <MenuItem value={"RG16"}>Tortosa</MenuItem>
+          <MenuItem value={"RG17"}>Melilla</MenuItem>
+          <MenuItem value={"RG18"}>Granada</MenuItem>
         </Select>
       </FormControl>
     </div>
