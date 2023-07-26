@@ -23,7 +23,12 @@ const trabajos = (printer) =>{
             //     resolve("+500");
             // }; 
             
-            resolve(result[0]);
+            resolve(
+                {
+                    impresora: printer,
+                    valor: result[0]
+                }
+                );
         });
         
     });
