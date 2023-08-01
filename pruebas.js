@@ -43,7 +43,7 @@ const rows = [
 
 const setTrabajosOnRow = () => {
     
-    data.forEach((item) => {
+    arr.forEach((item) => {
 
         rows.find(printer => {
 
@@ -53,4 +53,6 @@ const setTrabajosOnRow = () => {
         })
     });
 }
+setTrabajosOnRow();
+
 console.log(rows)

@@ -74,7 +74,7 @@ export default function StickyHeadTable(props) {
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
     const [almacen, setAlmacen] = React.useState('');
     const [papel, setPapel] = React.useState('');
-    const {data} = props;
+    const data = props;
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -85,6 +85,19 @@ export default function StickyHeadTable(props) {
         setPage(0);
     };
 
+    const actualizaDatosRow = () => {
+
+        data.product.forEach((item) => {
+
+            rows.find(printer => {
+
+                if (item.value.impresora === printer.nameImpresora) {
+                    printer.numTrabajos = item.value.valor
+                }
+            })
+        });
+    }
+
     //Esta es la función que hace el filtro de los select, o lo intenta.
     const filterSelects = () => {
 
@@ -93,33 +106,29 @@ export default function StickyHeadTable(props) {
 
         // Hay 3 if, el prinero es la pantalla de inicio sin selección, el segundo solo selección de almacén y el tercero solo con papel.
         if (almacen === '' && papel === '') {
-            console.log(data);
+            actualizaDatosRow();
             return rows;
         } else if (almacen != '' && papel === '') {
             arrFilteredAlmacen = rows.filter(impresora => impresora.numAlmacen === almacen);
+            actualizaDatosRow();
             return arrFilteredAlmacen;
         } else if (almacen === '' && papel != '') {
             arrFilteredAlmacen = rows.filter(impresora => impresora.tipo === papel);
+            actualizaDatosRow();
             return arrFilteredAlmacen;
         }
 
         arrFilteredAlmacen = rows.filter(impresora => impresora.numAlmacen === almacen);
         arrFilteredTipo = arrFilteredAlmacen.filter(impresora => impresora.tipo === papel);
 
-        
 
-        data.forEach((item) => {
-    
-            rows.find(printer => {
-    
-                if (item.value.impresora === printer.nameImpresora) {
-                    printer.numTrabajos = item.value.valor
-                }
-            })
-        });
+        //Aquí insertamos en cada row el valor que nos debe venir por props
+
+
+
 
         return arrFilteredTipo;
-    }    
+    }
 
     return (
         <>

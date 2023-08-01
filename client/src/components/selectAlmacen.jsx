@@ -34,5 +34,6 @@ export const SelectAlmacen = ({almacen, setAlmacen}) => {
   );
 }
 SelectAlmacen.propTypes = {
-  almacen: PropTypes.string
+  almacen: PropTypes.string,
+  setAlmacen: PropTypes.func
 };

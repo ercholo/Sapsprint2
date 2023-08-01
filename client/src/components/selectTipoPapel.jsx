@@ -32,5 +32,6 @@ export const SelectTipoPapel = ({papel, setPapel}) => {
   );
 }
 SelectTipoPapel.propTypes = {
-  papel: PropTypes.string
+  papel: PropTypes.string,
+  setPapel: PropTypes.func
 };
