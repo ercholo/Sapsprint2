@@ -85,6 +85,8 @@ export default function StickyHeadTable(props) {
         setPage(0);
     };
 
+
+    //Aquí insertamos en cada row el valor que nos debe venir por props
     const actualizaDatosRow = () => {
 
         data.product.forEach((item) => {
@@ -120,13 +122,7 @@ export default function StickyHeadTable(props) {
 
         arrFilteredAlmacen = rows.filter(impresora => impresora.numAlmacen === almacen);
         arrFilteredTipo = arrFilteredAlmacen.filter(impresora => impresora.tipo === papel);
-
-
-        //Aquí insertamos en cada row el valor que nos debe venir por props
-
-
-
-
+        actualizaDatosRow();
         return arrFilteredTipo;
     }
 

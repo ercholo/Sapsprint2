@@ -13,10 +13,15 @@ const App = () => {
     // setData(data[3].value.valor);
     // console.log(data[3].value.valor)
     setData(data);
-    // console.log({data});
+    console.log({data});
   };
+
+
   useEffect(() => {
-    getImpresoras();
+    const interval = setInterval(() => {
+      getImpresoras();
+    }, 10000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
