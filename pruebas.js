@@ -53,6 +53,7 @@ const setTrabajosOnRow = () => {
         })
     });
 }
+
 setTrabajosOnRow();
 
 console.log(rows)
