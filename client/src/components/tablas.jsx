@@ -10,7 +10,9 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { SelectAlmacen } from './selectAlmacen';
 import { SelectTipoPapel } from './selectTipoPapel';
+import styles from '../styles/celdas.module.css';
 
+//Definimos las columnas
 const columns = [
     {
         id: 'impresoras',
@@ -35,10 +37,13 @@ const columns = [
     },
 ];
 
+//Funcion para crear las futuras filas (rows)
 function createData(nameImpresora, numTrabajos, numAlmacen, tipo) {
     return { nameImpresora, numTrabajos, numAlmacen, tipo };
 }
 
+
+//Llamada a la funcion que genera las filas pasándole datos de relleno iniciales
 const rows = [
     createData('16ALAV101', 0, 'RG16', 'papel'),
     createData('16ALAV201', 0, 'RG16', 'papel'),
@@ -68,6 +73,8 @@ const rows = [
     createData('18ALJEF01', 0, 'RG18', 'papel')
 ]
 
+
+//Funcion donde se definie la tabla con stickyhead
 export default function StickyHeadTable(props) {
 
     const [page, setPage] = React.useState(0);
@@ -86,7 +93,7 @@ export default function StickyHeadTable(props) {
     };
 
 
-    //Aquí insertamos en cada row el valor que nos debe venir por props
+    //Aquí insertamos en cada row el valor de números de impresión que recibimos por las props
     const actualizaDatosRow = () => {
 
         data.product.forEach((item) => {
@@ -106,7 +113,8 @@ export default function StickyHeadTable(props) {
         let arrFilteredAlmacen = [];
         let arrFilteredTipo = [];
 
-        // Hay 3 if, el prinero es la pantalla de inicio sin selección, el segundo solo selección de almacén y el tercero solo con papel.
+        // Hay 3 if, el prinero es la pantalla de inicio sin selección, el segundo solo selección de almacén y el tercero solo con papel. En todos ellos 
+        // se llama a la funcion actualizadatosRow para que actualice los datos con cada vista.
         if (almacen === '' && papel === '') {
             actualizaDatosRow();
             return rows;
@@ -126,6 +134,18 @@ export default function StickyHeadTable(props) {
         return arrFilteredTipo;
     }
 
+
+    // Esta función cambia el color dependiendo de si hay error en el 'data' (props)
+    const getBackgroundColor = filaEvaluadaError => {
+
+        return data.product.find(printer => {
+
+            if (printer.value.impresora === filaEvaluadaError && printer.value.error === true) {
+
+                return styles.red
+            }
+        })
+    }
     return (
         <>
             <div className="flexbox">
@@ -148,6 +168,7 @@ export default function StickyHeadTable(props) {
                                         key={column.id}
                                         align={column.align}
                                         style={{ minWidth: column.minWidth }}
+                                        sx={{ fontWeight: 'bold', fontSize: 18 }}
                                     >
                                         {column.label}
                                     </TableCell>
@@ -160,8 +181,8 @@ export default function StickyHeadTable(props) {
                                 : filterSelects()
                             ).map((row) => {
                                 return (
-                                    <TableRow key={row.nameImpresora} hover={true}>
-                                        <TableCell component="th" scope="row">
+                                    <TableRow key={row.nameImpresora} hover={true} className={getBackgroundColor(row.nameImpresora) === undefined ? styles.white : styles.red}>
+                                        <TableCell component="th" scope="row" >
                                             {row.nameImpresora}
                                         </TableCell>
                                         <TableCell style={{ width: 760 }} align="right">

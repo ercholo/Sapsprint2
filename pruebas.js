@@ -3,6 +3,7 @@ let arr =
         {
             "status": "fulfilled",
             "value": {
+                "error": false,
                 "impresora": "16ALAV101",
                 "valor": "11"
             }
@@ -10,6 +11,7 @@ let arr =
         {
             "status": "fulfilled",
             "value": {
+                "error": false,
                 "impresora": "16ALAV102",
                 "valor": "12"
             }
@@ -17,6 +19,7 @@ let arr =
         {
             "status": "fulfilled",
             "value": {
+                "error": true,
                 "impresora": "18ALETQ01",
                 "valor": "5"
             }
@@ -24,36 +27,55 @@ let arr =
         {
             "status": "fulfilled",
             "value": {
+                "error": false,
                 "impresora": "18ALETQ02",
                 "valor": "55"
             }
         }
     ]
 
-function createData(nameImpresora, numTrabajos, numAlmacen, tipo) {
-    return { nameImpresora, numTrabajos, numAlmacen, tipo };
+const fila = "18ALETQ01";
+const siONo = "styles.white"
+
+const getBackgroundColor = filaEvaluadaError => {
+
+   arr.find(printer => {
+
+        // console.log(printer)
+
+        if (printer.value.impresora === filaEvaluadaError && printer.value.error === true) {
+
+            siONo = "styles.red"
+            
+        }
+
+        return siONo
+    })
 }
 
-const rows = [
-    createData('16ALAV101', 0, 'RG16', 'papel'),
-    createData('16ALAV102', 0, 'RG16', 'papel'),
-    createData('18ALETQ01', 0, 'RG18', 'etiquetas'),
-    createData('18ALETQ02', 0, 'RG18', 'etiquetas')
-]
+const hola = getBackgroundColor(fila);
 
-const setTrabajosOnRow = () => {
-    
-    arr.forEach((item) => {
+console.log(hola)
 
-        rows.find(printer => {
 
-            if (item.value.impresora === printer.nameImpresora) {
-                printer.numTrabajos = item.value.valor
-            }
-        })
-    });
-}
 
-setTrabajosOnRow();
+// const trues = [true, false, true];
 
-console.log(rows)
+// const uno = 1
+// const dos = 2
+
+// const getBackgroundColor = () => {
+
+//     trues.forEach((item) => {
+
+//         if (trues) {
+//             return uno;
+
+//         } else {
+//             return dos;
+//         }
+
+//     })
+
+// }
+// console.log(getBackgroundColor())

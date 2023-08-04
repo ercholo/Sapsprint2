@@ -5,18 +5,19 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import PropTypes from 'prop-types';
 
-export const SelectAlmacen = ({almacen, setAlmacen}) => {
+export const SelectAlmacen = ({ almacen, setAlmacen }) => {
   // const [almacen, setAlmacen] = React.useState('');
 
   const handleChange = (event) => {
     setAlmacen(event.target.value);
   };
-  
+
   return (
     <div>
-      <FormControl sx={{ m: 1, minWidth: 180 }}>
-        <InputLabel id="seleccionarAlmacen">Almacén</InputLabel>
+      <FormControl sx={{ m: 1, minWidth: 180, bgcolor: 'text-disabled'}}>
+        <InputLabel id="seleccionarAlmacen" sx={{ fontWeight: 'bold', fontSize: 20 }}>Almacén</InputLabel>
         <Select
+          sx={{ fontWeight: 'bold', textAlign: 'center', fontSize: 16 }}
           labelId="seleccionarAlmacen"
           id="seleccionarAlmacen"
           value={almacen}

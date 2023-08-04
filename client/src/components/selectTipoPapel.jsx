@@ -13,15 +13,17 @@ export const SelectTipoPapel = ({papel, setPapel}) => {
 
   return (
     <div>
-      <FormControl sx={{ m: 1, minWidth: 180 }}>
-        <InputLabel id="seleccionarTipoPapel">Tipo</InputLabel>
+      <FormControl sx={{ m: 1, minWidth: 180, bgcolor: 'text-disabled'}}>
+        <InputLabel id="seleccionarTipoPapel" sx={{ fontWeight: 'bold', fontSize: 20 }}>Tipo</InputLabel>
         <Select
+          sx={{ fontWeight: 'bold' }}
           labelId="seleccionarTipoPapel"
           id="seleccionarTipoPapel"
           value={papel}
           onChange={handleChange}
           autoWidth
           label="Tipo"
+          
         >
           {/* <MenuItem value={"todos"}>Todes</MenuItem> */}
           <MenuItem value={"papel"}>Papel</MenuItem>

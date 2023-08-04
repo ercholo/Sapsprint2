@@ -3,7 +3,6 @@ require('dotenv').config();
 const cors = require('cors')
 const { dbConnection } = require('./database/config');
 const corsOptions = require('./controllers/funciones')
-//console.log(process.env)
 
 //Crear servidor Express
 const app = express();
@@ -18,7 +17,6 @@ app.use(cors(corsOptions));
 app.use(express.static('public'));
 
 // Lectura y parseo del body
-
 app.use(express.json());
 
 //TODO: auth // crear, login, renew

@@ -8,9 +8,6 @@ const router = Router();
 const {check} = require('express-validator');
 const { validarCampos } = require('../middlewares/validar-campos');
 const {crearUsuario, loginUsuario, revalidarToken} = require('../controllers/auth');
-const basicAuth = require('express-basic-auth'),
-  AD = require('activedirectory');
-
 
 router.post(
   '/new', 
@@ -32,26 +29,5 @@ router.post(
   loginUsuario);
 
 router.get('/renew', revalidarToken);
-
-// function myAsyncAuthorizer(username, password, cb) {
-//   var ad = new AD(global.config.ldap);
-//   ad.authenticate('HEFAME\\' + username, password, function (err, auth) {
-//     if (err) {
-//       log.error("Usuario: " + username + ": " + err.message);
-//       cb(null, false);
-//       return;
-//     }
-//     cb(null, auth);
-//   });
-// }
-
-// module.exports = function (app) {
-//     // autenticación BasicAuth
-//     app.use(basicAuth({
-//       authorizer: myAsyncAuthorizer,
-//       authorizeAsync: true,
-//       challenge: true
-//     }))
-// };
 
 module.exports = router;
