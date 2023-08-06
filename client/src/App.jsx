@@ -10,13 +10,13 @@ const App = () => {
     const res = await fetch('http://172.30.5.181:4444/impresoras');
     const data = await res.json();
     setData(data);
-    console.log({ data });
+    // console.log({ data });
   };
 
   useEffect(() => {
     const interval = setInterval(() => {
       getImpresoras();
-    }, 10000);
+    }, 8000);
     return () => clearInterval(interval);
   }, []);
 

@@ -11,6 +11,7 @@ import Paper from '@mui/material/Paper';
 import { SelectAlmacen } from './selectAlmacen';
 import { SelectTipoPapel } from './selectTipoPapel';
 import styles from '../styles/celdas.module.css';
+import { BotonPausa } from './botonesPausa';
 
 //Definimos las columnas
 const columns = [
@@ -190,6 +191,9 @@ export default function StickyHeadTable(props) {
                                         </TableCell>
                                         <TableCell style={{ width: 160 }} align="right">
                                             {row.numAlmacen}
+                                        </TableCell>
+                                        <TableCell style={{ width: 160 }} align="right">
+                                            <BotonPausa property={row.nameImpresora}/>
                                         </TableCell>
                                     </TableRow>
                                 );
