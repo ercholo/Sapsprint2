@@ -16,7 +16,7 @@ const App = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       getImpresoras();
-    }, 9000);
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
 

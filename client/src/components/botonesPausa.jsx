@@ -13,7 +13,7 @@ export const BotonPausa = (nombreImpresora) => {
         console.log(`Boton pulsado por la impresora ${printer}`);
         
         try {
-            const res = await fetch(`http://172.30.5.181:4444/impresoras/pausa/${printer}`, {
+            const res = await fetch(`http://172.30.5.181:4444/impresoras/${printer}/pausa/`, {
                 method: 'GET'
             })
             const data = await res.json();
@@ -23,7 +23,7 @@ export const BotonPausa = (nombreImpresora) => {
             console.log(error);
         }
         
-        setButtonText('Reanudar');        
+        setButtonText('Pausar');        
     }
   
     return (

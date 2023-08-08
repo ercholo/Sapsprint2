@@ -8,12 +8,9 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { TableRows } from './TableRow';
 import { SelectAlmacen } from './selectAlmacen';
 import { SelectTipoPapel } from './selectTipoPapel';
-import styles from '../styles/celdas.module.css';
-import { BotonPausa } from './botonesPausa';
-import { BotonReanudar } from './botonReanudar';
-import { BotonEstado } from './botonEstado';
 
 //Definimos las columnas
 const columns = [
@@ -138,17 +135,7 @@ export default function StickyHeadTable(props) {
     }
 
 
-    // Esta función cambia el color dependiendo de si hay error en el 'data' (props)
-    const getBackgroundColor = filaEvaluadaError => {
-
-        return data.product.find(printer => {
-
-            if (printer.value.impresora === filaEvaluadaError && printer.value.error === true) {
-
-                return styles.red
-            }
-        })
-    }
+    
     return (
         <>
             <div className="flexbox">
@@ -184,26 +171,7 @@ export default function StickyHeadTable(props) {
                                 : filterSelects()
                             ).map((row) => {
                                 return (
-                                    <TableRow key={row.nameImpresora} hover={true} className={getBackgroundColor(row.nameImpresora) === undefined ? styles.white : styles.red}>
-                                        <TableCell component="th" scope="row" >
-                                            {row.nameImpresora}
-                                        </TableCell>
-                                        <TableCell style={{ width: 760 }} align="right">
-                                            {row.numTrabajos}
-                                        </TableCell>
-                                        <TableCell style={{ width: 160 }} align="right">
-                                            {row.numAlmacen}
-                                        </TableCell>
-                                        <TableCell style={{ width: 160 }} align="right">
-                                            <BotonPausa property={row.nameImpresora}/>
-                                        </TableCell>
-                                        <TableCell style={{ width: 160 }} align="right">
-                                            <BotonReanudar property={row.nameImpresora}/>
-                                        </TableCell>
-                                        <TableCell style={{ width: 160 }} align="right">
-                                            <BotonEstado property={row.nameImpresora}/>
-                                        </TableCell>
-                                    </TableRow>
+                                    <TableRows key={row.nameImpresora} props={row} data={data}/>
                                 );
                             })}
                         </TableBody>

@@ -24,7 +24,7 @@ router.get('/', async (req, res = response) => {
         })
 });
 
-router.get('/pausa/:nombreImpresora', async (req, res = response) => {
+router.get('/:nombreImpresora/pausa', async (req, res = response) => {
 
     let nombreImpresora = req.params.nombreImpresora;
     
@@ -36,7 +36,7 @@ router.get('/pausa/:nombreImpresora', async (req, res = response) => {
 
 })
 
-router.get('/reanuda/:nombreImpresora', async (req, res = response) => {
+router.get('/:nombreImpresora/reanuda', async (req, res = response) => {
 
     let nombreImpresora = req.params.nombreImpresora;
 
@@ -48,7 +48,7 @@ router.get('/reanuda/:nombreImpresora', async (req, res = response) => {
 
 })
 
-router.get('/estado/:nombreImpresora', async (req, res = response) => {
+router.get('/:nombreImpresora/estado', async (req, res = response) => {
 
     let nombreImpresora = req.params.nombreImpresora;
 

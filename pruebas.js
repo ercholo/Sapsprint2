@@ -79,3 +79,71 @@ Estado de impresora extendido Desconocido
 Estado de error detectado Desconocido
 Estado de error detectado extendido Desconocido`;
 
+const pausa = 
+`Nombre de servidor SAPSPRINT2
+Nombre de impresora 01sipro01
+Nombre del recurso compartido 01SIPRO01
+Nombre de controlador Ricoh Aficio MP 161 PCL6
+Nombre del puerto 172.30.2.15
+Comentario Programación
+Ubicación Sistemas de Información
+Archivo separador
+Procesador de impresión winprint
+Tipo de datos RAW
+Parámetros
+Prioridad 1
+Prioridad predeterminada 0
+Impresora siempre disponible
+Atributos local shared do_complete_first
+
+Estado de la impresora Otros
+Estado de impresora extendido Pausado
+Estado de error detectado Otros
+Estado de error detectado extendido Otros`
+
+
+const imprimiendo =
+`Nombre de servidor SAPSPRINT2
+Nombre de impresora 01sipro01
+Nombre del recurso compartido 01SIPRO01
+Nombre de controlador Ricoh Aficio MP 161 PCL6
+Nombre del puerto 172.30.2.15
+Comentario Programación
+Ubicación Sistemas de Información
+Archivo separador
+Procesador de impresión winprint
+Tipo de datos RAW
+Parámetros
+Prioridad 1
+Prioridad predeterminada 0
+Impresora siempre disponible
+Atributos local shared do_complete_first
+
+Estado de la impresora Imprimiendo
+Estado de impresora extendido Desconocido
+Estado de error detectado Otros
+Estado de error detectado extendido Desconocido`
+
+
+const sinConexion = 
+`Nombre de servidor SAPSPRINT2
+Nombre de impresora 01sipro01
+Nombre del recurso compartido 01SIPRO01
+Nombre de controlador Ricoh Aficio MP 161 PCL6
+Nombre del puerto 172.30.2.15
+Comentario Programación
+Ubicación Sistemas de Información
+Archivo separador
+Procesador de impresión winprint
+Tipo de datos RAW
+Parámetros
+Prioridad 1
+Prioridad predeterminada 0
+Impresora siempre disponible
+Atributos local shared do_complete_first
+
+Estado de la impresora Imprimiendo
+Estado de impresora extendido Desconocido
+Estado de error detectado Otros
+Estado de error detectado extendido Desconocido`
+
