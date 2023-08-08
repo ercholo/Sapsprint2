@@ -34,48 +34,48 @@ let arr =
         }
     ]
 
-const fila = "18ALETQ01";
-const siONo = "styles.white"
 
-const getBackgroundColor = filaEvaluadaError => {
+const error = 
+`Nombre de servidor SAPSPRINT2
+Nombre de impresora 18aletq02
+Nombre del recurso compartido
+Nombre de controlador Generic / Text Only
+Nombre del puerto 172.30.120.81
+Comentario
+Ubicación 172.30.120.231
+Archivo separador
+Procesador de impresión winprint
+Tipo de datos RAW
+Parámetros
+Prioridad 1
+Prioridad predeterminada 0
+Impresora siempre disponible
+Atributos local do_complete_first
 
-   arr.find(printer => {
+Estado de la impresora Otros
+Estado de impresora extendido Error
+Estado de error detectado Otros
+Estado de error detectado extendido Otros`;
 
-        // console.log(printer)
+const inactiva =
+`Nombre de servidor SAPSPRINT2
+Nombre de impresora 18aletq01
+Nombre del recurso compartido
+Nombre de controlador Generic / Text Only
+Nombre del puerto 172.30.120.80
+Comentario
+Ubicación
+Archivo separador
+Procesador de impresión winprint
+Tipo de datos RAW
+Parámetros
+Prioridad 1
+Prioridad predeterminada 0
+Impresora siempre disponible
+Atributos local do_complete_first
 
-        if (printer.value.impresora === filaEvaluadaError && printer.value.error === true) {
+Estado de la impresora Inactivo
+Estado de impresora extendido Desconocido
+Estado de error detectado Desconocido
+Estado de error detectado extendido Desconocido`;
 
-            siONo = "styles.red"
-            
-        }
-
-        return siONo
-    })
-}
-
-const hola = getBackgroundColor(fila);
-
-console.log(hola)
-
-
-
-// const trues = [true, false, true];
-
-// const uno = 1
-// const dos = 2
-
-// const getBackgroundColor = () => {
-
-//     trues.forEach((item) => {
-
-//         if (trues) {
-//             return uno;
-
-//         } else {
-//             return dos;
-//         }
-
-//     })
-
-// }
-// console.log(getBackgroundColor())

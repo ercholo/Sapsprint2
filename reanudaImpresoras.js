@@ -1,12 +1,12 @@
 const { exec } = require('child_process');
 const regexCorrecto = /Correcto/gi;
-let pausa = Boolean;
+let reanuda = Boolean;
 
-const pausar = (printer) => {
+const reanudar = (printer) => {
 
     return new Promise((resolve, reject) => {
 
-        exec(`cscript prnqctl.vbs -z -s SAPSPRINT2 -p ${printer}`, { cwd: 'C:\\Windows\\System32\\Printing_Admin_Scripts\\es-ES' }, (error, stdout, stderr) => {
+        exec(`cscript prnqctl.vbs -m -s SAPSPRINT2 -p ${printer}`, { cwd: 'C:\\Windows\\System32\\Printing_Admin_Scripts\\es-ES' }, (error, stdout, stderr) => {
 
             //Si hay errores, que los muestre
             if (error) {
@@ -17,17 +17,18 @@ const pausar = (printer) => {
 
             //Si la impresora devuelve Correcto entontes pusa = true
             if (stdout.match(regexCorrecto)) {
-                pausa = true
-            } else { pausa =  false }
+                reanuda = true
+            } else { reanuda =  false }
 
             resolve(
                 {
-                    pausa: pausa
+                    reanuda: reanuda
                 }
             );
         });
+
     });
 
 };
 
-module.exports = pausar;
+module.exports = reanudar;

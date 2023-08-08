@@ -12,6 +12,8 @@ import { SelectAlmacen } from './selectAlmacen';
 import { SelectTipoPapel } from './selectTipoPapel';
 import styles from '../styles/celdas.module.css';
 import { BotonPausa } from './botonesPausa';
+import { BotonReanudar } from './botonReanudar';
+import { BotonEstado } from './botonEstado';
 
 //Definimos las columnas
 const columns = [
@@ -194,6 +196,12 @@ export default function StickyHeadTable(props) {
                                         </TableCell>
                                         <TableCell style={{ width: 160 }} align="right">
                                             <BotonPausa property={row.nameImpresora}/>
+                                        </TableCell>
+                                        <TableCell style={{ width: 160 }} align="right">
+                                            <BotonReanudar property={row.nameImpresora}/>
+                                        </TableCell>
+                                        <TableCell style={{ width: 160 }} align="right">
+                                            <BotonEstado property={row.nameImpresora}/>
                                         </TableCell>
                                     </TableRow>
                                 );

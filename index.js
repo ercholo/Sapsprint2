@@ -1,7 +1,6 @@
 const express = require('express');
 require('dotenv').config();
 const cors = require('cors')
-const { dbConnection } = require('./database/config');
 const corsOptions = require('./controllers/funciones')
 
 //Crear servidor Express
@@ -20,7 +19,6 @@ app.use(express.static('public'));
 app.use(express.json());
 
 //TODO: auth // crear, login, renew
-app.use('/api/auth', require('./routes/auth'));
 app.use('/impresoras', require('./routes/impresoras'));
 
 //TODO: CRUD: Eventos

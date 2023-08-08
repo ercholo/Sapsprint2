@@ -6,7 +6,7 @@ const trabajos = (printer) => {
 
     return new Promise((resolve, reject) => {
 
-        exec(`cscript prnjobs.vbs -l -p \\\\sapsprint2\\${printer}`, { cwd: 'C:\\Windows\\System32\\Printing_Admin_Scripts\\es-ES' }, (error, stdout, stderr) => {
+        exec(`cscript prnjobs.vbs -l -s sapsprint2 -p ${printer}`, { cwd: 'C:\\Windows\\System32\\Printing_Admin_Scripts\\es-ES' }, (error, stdout, stderr) => {
 
             //Si hay errores, que los muestre
             if (error) {
