@@ -11,7 +11,7 @@ export const BotonReanudar = (nombreImpresora) => {
         
         try {
             const res = await fetch(`http://172.30.5.181:4444/impresoras/${printer}/reanuda`, {
-                method: 'GET',
+                method: 'GET'
             })
             const data = await res.json();
             console.log(data);

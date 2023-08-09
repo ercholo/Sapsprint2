@@ -1,6 +1,11 @@
 const { exec } = require('child_process');
 const regexNumImp = /\d+$/g;
 const regexError = /error/gi;
+const regFechaPrimerTrabajo = /^(hora|time).*?$/gim;
+let fechaPrimerTrabajo = "";
+const regId =  /trabajo.(\d+)/i;
+let idPrimerTrabajo = 1;
+
 
 const trabajos = (printer) => {
 
@@ -17,11 +22,24 @@ const trabajos = (printer) => {
 
             //result es el array que tiene los trabajos en cola cuando la impresora es llamada
             const result = stdout.replace(/\r\n/g, '').match(regexNumImp);
+            fechaPrimerTrabajo = stdout.match(regFechaPrimerTrabajo);
+            idPrimerTrabajo = stdout.match(regId);
+
 
             //Si la impresora tiene un "error" en el stdout devuelvo true en el campo "error"
             if (stdout.match(regexError)) {
                 error = true
             } else { error = false }
+
+            //Si hay algún trabajo hará match con algo distinto a null
+            if (fechaPrimerTrabajo === null) {
+                fechaPrimerTrabajo = [null,null]
+            }
+
+            if (idPrimerTrabajo === null) {
+                idPrimerTrabajo = [null,null]
+            }
+
 
 
             //Si hay más de 500 lo dejo pasar, hay muchas impresoras averiadas con millones de trabajos
@@ -33,10 +51,14 @@ const trabajos = (printer) => {
                 {
                     impresora: printer,
                     valor: result[0],
-                    error: error
+                    error: error,
+                    fechaPrimerTrabajo: fechaPrimerTrabajo[0],
+                    idUltimoTrabajo: idPrimerTrabajo[1]
                 }
             );
-        });
+        }
+
+        );
 
     });
 

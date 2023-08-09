@@ -1,5 +1,5 @@
 import { Button } from '@mui/material';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export const BotonPausa = (nombreImpresora) => {
 
@@ -17,7 +17,7 @@ export const BotonPausa = (nombreImpresora) => {
                 method: 'GET'
             })
             const data = await res.json();
-            console.log(data.pausa);           
+            console.log(data);           
             
         } catch (error)      {
             console.log(error);

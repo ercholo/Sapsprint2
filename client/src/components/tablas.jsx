@@ -66,6 +66,7 @@ const rows = [
     createData('18ALAV102', 0, 'RG18', 'papel'),
     createData('18ALAV201', 0, 'RG18', 'papel'),
     createData('18ALAV202', 0, 'RG18', 'papel'),
+    createData('18ALDEV01', 0, 'RG18', 'papel'),
     createData('18ALETQ01', 0, 'RG18', 'etiquetas'),
     createData('18ALETQ02', 0, 'RG18', 'etiquetas'),
     createData('18ALETQ03', 0, 'RG18', 'etiquetas'),
@@ -75,14 +76,14 @@ const rows = [
 
 
 //Funcion donde se definie la tabla con stickyhead
-export default function StickyHeadTable(props) {
+export default function StickyHeadTable() {
 
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
     const [almacen, setAlmacen] = React.useState('');
     const [papel, setPapel] = React.useState('');
-    const data = props;
-
+    const [data, setData] = React.useState([]);
+    
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
     };
@@ -92,14 +93,25 @@ export default function StickyHeadTable(props) {
         setPage(0);
     };
 
+    const getImpresoras = async () => {
+        const res = await fetch('http://172.30.5.181:4444/impresoras');
+        const data = await res.json();
+        setData(data);
+        console.log({ data });
+      };
+
+      React.useEffect(() => {
+        const interval = setInterval(() => {
+          getImpresoras();
+        }, 7000);
+        return () => clearInterval(interval);
+      }, []);
 
     //Aquí insertamos en cada row el valor de números de impresión que recibimos por las props
     const actualizaDatosRow = () => {
 
-        data.product.forEach((item) => {
-
+        data.forEach((item) => {
             rows.find(printer => {
-
                 if (item.value.impresora === printer.nameImpresora) {
                     printer.numTrabajos = item.value.valor
                 }
@@ -134,8 +146,6 @@ export default function StickyHeadTable(props) {
         return arrFilteredTipo;
     }
 
-
-    
     return (
         <>
             <div className="flexbox">

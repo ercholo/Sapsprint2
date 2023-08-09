@@ -8,12 +8,11 @@ import styles from '../styles/celdas.module.css';
 
 export const TableRows = (filas) => {
 
-
     const row = filas.props;
-    const data = filas.data.product;
-    // console.log(data)
+    const data = filas.data;
+    // console.log({data})
 
-    // Esta función cambia el color dependiendo de si hay error en el 'data' (props)
+    //Esta función cambia el color dependiendo de si hay error en el 'data' (props)
     const getBackgroundColor = filaEvaluadaError => {
 
         return data.find(printer => {
