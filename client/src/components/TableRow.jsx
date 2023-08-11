@@ -4,6 +4,7 @@ import TableRow from '@mui/material/TableRow';
 import { BotonPausa } from './botonesPausa';
 import { BotonReanudar } from './botonReanudar';
 import { BotonEstado } from './botonEstado';
+import { BotonDesviar } from './botonDesviar';
 import styles from '../styles/celdas.module.css';
 
 export const TableRows = (filas) => {
@@ -30,20 +31,23 @@ export const TableRows = (filas) => {
             <TableCell component="th" scope="row" >
                 {row.nameImpresora}
             </TableCell>
-            <TableCell style={{ width: 760 }} align="right">
+            <TableCell style={{ width: 160 }} align="center">
                 {row.numTrabajos}
             </TableCell>
-            <TableCell style={{ width: 160 }} align="right">
+            <TableCell style={{ width: 160 }} align="left">
                 {row.numAlmacen}
             </TableCell>
-            <TableCell style={{ width: 160 }} align="right">
+            <TableCell style={{ width: 160 }} align="left">
                 <BotonPausa property={row.nameImpresora} />
             </TableCell>
-            <TableCell style={{ width: 160 }} align="right">
+            <TableCell style={{ width: 160 }} align="left">
                 <BotonReanudar property={row.nameImpresora} />
             </TableCell>
-            <TableCell style={{ width: 160 }} align="right">
+            <TableCell style={{ width: 160 }} align="left">
                 <BotonEstado property={row.nameImpresora} />
+            </TableCell>
+            <TableCell style={{ width: 160 }} align="left">
+                <BotonDesviar property={row.nameImpresora} />
             </TableCell>
         </TableRow>
     )

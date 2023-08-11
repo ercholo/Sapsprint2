@@ -1,15 +1,17 @@
 import { Button } from '@mui/material';
 import {useState} from 'react';
+import { AlertDialogSlide } from './DialogEstado';
 
 export const BotonEstado = (nombreImpresora) => {
 
     const printer = nombreImpresora.property;
+    const [ openDialog, setOpenDialog ] = useState(false);
+    const [estado, setEstado] = useState("");
 
-    const [isDisabled, setDisabled] = useState(false);
 
     const handleClick = async () => {
 
-        setDisabled(true);
+        // setDisabled(true);
         // La función para manejar el punchar el botón ¿fetch?
         console.log(`Boton estado por la impresora ${printer}`);
 
@@ -19,7 +21,8 @@ export const BotonEstado = (nombreImpresora) => {
             })
             const data = await res.json();
             console.log(data);
-            if(data) {setDisabled(false)}
+            setEstado(data);
+            // if(data) {setDisabled(false)}
 
         } catch (error) {
             console.log(error);
@@ -27,15 +30,22 @@ export const BotonEstado = (nombreImpresora) => {
 
     }
 
-    return (
+    
+    const handleOpenDialog = async () => {
+        console.log("abro el dialogo");
+        await handleClick(printer);
+        setOpenDialog(true);
+    };
 
+    return (
+        <>
         <Button
             variant="contained"
-            disabled = {isDisabled}
-            onClick={() =>
-                handleClick(printer)
-            }>
+            // disabled = {isDisabled}
+            onClick={handleOpenDialog}>
             Estado
         </Button>
+        <AlertDialogSlide openDialog={openDialog} setOpenDialog={setOpenDialog} estado={estado}/>
+        </>
     )
 }

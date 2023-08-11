@@ -210,8 +210,11 @@ Extended detected error state Unknown`
 
 
 const sinConexion = 
-`Nombre de servidor SAPSPRINT2
-Nombre de impresora 17attom01
+`Microsoft (R) Windows Script Host versión 5.812
+Copyright (C) Microsoft Corporation. Reservados todos los derechos.
+
+Nombre de servidor SAPSPRINT2
+Nombre de impresora 17ATTOM01
 Nombre del recurso compartido 17ATTOM01
 Nombre de controlador Ricoh Aficio MP 161 PCL6
 Nombre del puerto 172.30.95.246
@@ -458,7 +461,13 @@ Estado de error detectado extendido Desconocido`
 
 const regFechaPrimerTrabajo = /^(hora|time).*?$/im;
 
-const prueba = primerTrabajo.match(regFechaPrimerTrabajo)
+
+
+
+
+const sinConexionReg = /Sin conexión|offline/gim;
+
+const prueba = sinConexion.match(sinConexionReg)
 
 
 

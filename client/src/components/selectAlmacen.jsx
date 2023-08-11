@@ -13,10 +13,10 @@ export const SelectAlmacen = ({ almacen, setAlmacen }) => {
 
   return (
     <div>
-      <FormControl sx={{ m: 1, minWidth: 180, bgcolor: 'text-disabled' }}>
+      <FormControl className="select" sx={{ m: 1, minWidth: 180, bgcolor: 'text-disabled' }}>
         <InputLabel id="seleccionarAlmacen" sx={{ fontWeight: 'bold', fontSize: 20 }}>Almacén</InputLabel>
         <Select
-          sx={{ fontWeight: 'bold', textAlign: 'center', fontSize: 16 }}
+          sx={{ fontWeight: 'bold', textAlign: 'center', fontSize: 20 }}
           labelId="seleccionarAlmacen"
           id="seleccionarAlmacen"
           value={almacen}
@@ -25,9 +25,9 @@ export const SelectAlmacen = ({ almacen, setAlmacen }) => {
           label="selecAlmacen"
         >
           {/* <MenuItem value={"todos"}>Todes</MenuItem> */}
-          <MenuItem value={"RG16"}>Tortosa</MenuItem>
-          <MenuItem value={"RG17"}>Melilla</MenuItem>
-          <MenuItem value={"RG18"}>Granada</MenuItem>
+          <MenuItem value={"RG16"} sx={{ fontWeight: 'bold', fontSize: 17 }}>Tortosa</MenuItem>
+          <MenuItem value={"RG17"} sx={{ fontWeight: 'bold', fontSize: 17 }}>Melilla</MenuItem>
+          <MenuItem value={"RG18"} sx={{ fontWeight: 'bold', fontSize: 17 }}>Granada</MenuItem>
         </Select>
       </FormControl>
     </div>

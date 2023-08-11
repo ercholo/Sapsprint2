@@ -31,7 +31,7 @@ router.get('/:nombreImpresora/pausa', async (req, res = response) => {
 
     let nombreImpresora = req.params.nombreImpresora;
     
-        let request = await pausar(nombreImpresora)
+        let request = pausar(nombreImpresora)
             .then((response) => res.json(response))
             .catch((error) => {
                 res.status(500).json({ error: error.message })
@@ -43,7 +43,7 @@ router.get('/:nombreImpresora/reanuda', async (req, res = response) => {
 
     let nombreImpresora = req.params.nombreImpresora;
 
-        let request = await reanudar(nombreImpresora)
+        let request = reanudar(nombreImpresora)
             .then((response) => res.json(response))
             .catch((error) => {
                 res.status(500).json({ error: error.message })
@@ -55,7 +55,7 @@ router.get('/:nombreImpresora/estado', async (req, res = response) => {
 
     let nombreImpresora = req.params.nombreImpresora;
 
-        let request = await estados(nombreImpresora)
+        let request = estados(nombreImpresora)
             .then((response) => res.json(response))
             .catch((error) => {
                 res.status(500).json({ error: error.message })

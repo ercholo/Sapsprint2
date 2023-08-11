@@ -13,10 +13,10 @@ export const SelectTipoPapel = ({papel, setPapel}) => {
 
   return (
     <div>
-      <FormControl sx={{ m: 1, minWidth: 180, bgcolor: 'text-disabled'}}>
+      <FormControl className="select"  sx={{ m: 1, minWidth: 180, bgcolor: 'text-disabled'}}>
         <InputLabel id="seleccionarTipoPapel" sx={{ fontWeight: 'bold', fontSize: 20 }}>Tipo</InputLabel>
         <Select
-          sx={{ fontWeight: 'bold' }}
+          sx={{ fontWeight: 'bold', textAlign: 'center'}}
           labelId="seleccionarTipoPapel"
           id="seleccionarTipoPapel"
           value={papel}
@@ -26,8 +26,8 @@ export const SelectTipoPapel = ({papel, setPapel}) => {
           
         >
           {/* <MenuItem value={"todos"}>Todes</MenuItem> */}
-          <MenuItem value={"papel"}>Papel</MenuItem>
-          <MenuItem value={"etiquetas"}>Etiquetas</MenuItem>
+          <MenuItem value={"papel"} sx={{ fontWeight: 'bold', fontSize: 17 }}>Papel</MenuItem>
+          <MenuItem value={"etiquetas"} sx={{ fontWeight: 'bold', fontSize: 17 }}>Etiquetas</MenuItem>
         </Select>
       </FormControl>
     </div>

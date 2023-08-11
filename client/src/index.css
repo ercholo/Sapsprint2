@@ -4,7 +4,6 @@
   font-weight: 500;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
   font-synthesis: none;
@@ -18,13 +17,19 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  background-color: green;
+  background-color: rgba(250, 205, 1, 255);
+}
+
+.logo {
+  width: 6%;
+  height: 6%;
+  object-fit: contain;
 }
 
 body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  min-width: 10px;
+  min-height: 10vh;
 }

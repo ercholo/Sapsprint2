@@ -3,9 +3,9 @@ const regInactiva = /inactivo|idle/gi;
 const regImprimiendo = /imprimiendo|printing/gi;
 const regPausa = /pausado|paused/gi;
 const sinPapel = /No\s\hay\s\papel|no\s\paper/gi;
-const sinConexion = /Sin\sconexión|offline/gi;
-const lowToner = /falta\s\toner|low\s\toner/gi;
-const regError = /error/gi;
+const sinConexion = /Sin conexi|offline/gi;
+const lowToner = /falta t|low toner/gi;
+const regError = /Error/g;
 
 const estados = (printer) => {
 
@@ -78,6 +78,7 @@ const estados = (printer) => {
                 );
 
             } else if (stdout.match(regError)) {
+                
                 resolve(
                     {
                         impresora: printer,

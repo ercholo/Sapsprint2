@@ -12,27 +12,56 @@ import { TableRows } from './TableRow';
 import { SelectAlmacen } from './selectAlmacen';
 import { SelectTipoPapel } from './selectTipoPapel';
 
+
 //Definimos las columnas
 const columns = [
     {
         id: 'impresoras',
         label: 'Impresoras',
-        minWidth: 170,
-        align: 'left',
+        minWidth: 10,
+        align: 'center',
         format: (value) => value.toLocaleString('en-US'),
     },
     {
         id: 'trabajos',
         label: 'Trabajos',
-        minWidth: 170,
-        align: 'right',
+        minWidth: 10,
+        align: 'center',
         format: (value) => value.toLocaleString('en-US'),
     },
     {
         id: 'almacen',
         label: 'Almacén',
-        minWidth: 170,
-        align: 'right',
+        minWidth: 10,
+        align: 'left',
+        format: (value) => value.toFixed(2),
+    },
+    {
+        id: 'pausar',
+        label: 'Pausar',
+        minWidth: 10,
+        align: 'left',
+        format: (value) => value.toFixed(2),
+    },
+    {
+        id: 'reanudar',
+        label: 'Reanudar',
+        minWidth: 10,
+        align: 'left',
+        format: (value) => value.toFixed(2),
+    },
+    {
+        id: 'estado',
+        label: 'Estado',
+        minWidth: 10,
+        align: 'left',
+        format: (value) => value.toFixed(2),
+    },
+    {
+        id: 'desviar',
+        label: 'Desviar',
+        minWidth: 10,
+        align: 'left',
         format: (value) => value.toFixed(2),
     },
 ];
@@ -83,7 +112,7 @@ export default function StickyHeadTable() {
     const [almacen, setAlmacen] = React.useState('');
     const [papel, setPapel] = React.useState('');
     const [data, setData] = React.useState([]);
-    
+
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
     };
@@ -98,14 +127,14 @@ export default function StickyHeadTable() {
         const data = await res.json();
         setData(data);
         console.log({ data });
-      };
+    };
 
-      React.useEffect(() => {
+    React.useEffect(() => {
         const interval = setInterval(() => {
-          getImpresoras();
-        }, 7000);
+            getImpresoras();
+        }, 6000);
         return () => clearInterval(interval);
-      }, []);
+    }, []);
 
     //Aquí insertamos en cada row el valor de números de impresión que recibimos por las props
     const actualizaDatosRow = () => {
@@ -148,7 +177,9 @@ export default function StickyHeadTable() {
 
     return (
         <>
+
             <div className="flexbox">
+                <img className="logo" src='../../images/LogoHefame.png'></img>
                 <SelectAlmacen
                     almacen={almacen}
                     setAlmacen={setAlmacen}
@@ -168,7 +199,7 @@ export default function StickyHeadTable() {
                                         key={column.id}
                                         align={column.align}
                                         style={{ minWidth: column.minWidth }}
-                                        sx={{ fontWeight: 'bold', fontSize: 18 }}
+                                        sx={{ fontWeight: 'bold', fontSize: 20 }}
                                     >
                                         {column.label}
                                     </TableCell>
@@ -181,7 +212,7 @@ export default function StickyHeadTable() {
                                 : filterSelects()
                             ).map((row) => {
                                 return (
-                                    <TableRows key={row.nameImpresora} props={row} data={data}/>
+                                    <TableRows key={row.nameImpresora} props={row} data={data} />
                                 );
                             })}
                         </TableBody>
