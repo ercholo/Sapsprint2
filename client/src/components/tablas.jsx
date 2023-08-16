@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useCallback, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -8,7 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { TableRows } from './TableRow';
+import { TableRows } from './tableRow';
 import { SelectAlmacen } from './selectAlmacen';
 import { SelectTipoPapel } from './selectTipoPapel';
 
@@ -67,51 +67,51 @@ const columns = [
 ];
 
 //Funcion para crear las futuras filas (rows)
-function createData(nameImpresora, numTrabajos, numAlmacen, tipo) {
-    return { nameImpresora, numTrabajos, numAlmacen, tipo };
+function createData(nameImpresora, numTrabajos, numAlmacen, tipo, ip) {
+    return { nameImpresora, numTrabajos, numAlmacen, tipo, ip };
 }
 
 
 //Llamada a la funcion que genera las filas pasándole datos de relleno iniciales
 const rows = [
-    createData('16ALAV101', 0, 'RG16', 'papel'),
-    createData('16ALAV201', 0, 'RG16', 'papel'),
-    createData('16ALAV102', 0, 'RG16', 'papel'),
-    createData('16ALAV202', 0, 'RG16', 'papel'),
-    createData('16ALDEV01', 0, 'RG16', 'papel'),
-    createData('16ALETQ01', 0, 'RG16', 'etiquetas'),
-    createData('16ALETQ02', 0, 'RG16', 'etiquetas'),
-    createData('16ALETQ03', 0, 'RG16', 'etiquetas'),
-    createData('16ALEXP01', 0, 'RG16', 'papel'),
-    createData('16ALJEF01', 0, 'RG16', 'papel'),
-    createData('17ADCOM01', 0, 'RG17', 'papel'),
-    createData('17ALAV101', 0, 'RG17', 'papel'),
-    createData('17ALAV102', 0, 'RG17', 'papel'),
-    createData('17ALDEV01', 0, 'RG17', 'papel'),
-    createData('17ALGVO01', 0, 'RG17', 'papel'),
-    createData('17ALJEF01', 0, 'RG17', 'papel'),
-    createData('17ATTOM01', 0, 'RG17', 'papel'),
-    createData('18ALAV101', 0, 'RG18', 'papel'),
-    createData('18ALAV102', 0, 'RG18', 'papel'),
-    createData('18ALAV201', 0, 'RG18', 'papel'),
-    createData('18ALAV202', 0, 'RG18', 'papel'),
-    createData('18ALDEV01', 0, 'RG18', 'papel'),
-    createData('18ALETQ01', 0, 'RG18', 'etiquetas'),
-    createData('18ALETQ02', 0, 'RG18', 'etiquetas'),
-    createData('18ALETQ03', 0, 'RG18', 'etiquetas'),
-    createData('18ALEXP01', 0, 'RG18', 'papel'),
-    createData('18ALJEF01', 0, 'RG18', 'papel')
+    createData('16ALAV101', 0, 'RG16', 'papel', '172.30.141.243'),
+    createData('16ALAV201', 0, 'RG16', 'papel', '172.30.141.245'),
+    createData('16ALAV102', 0, 'RG16', 'papel', '172.30.141.244'),
+    createData('16ALAV202', 0, 'RG16', 'papel', '172.30.141.246'),
+    createData('16ALDEV01', 0, 'RG16', 'papel', '172.30.141.247'),
+    createData('16ALETQ01', 0, 'RG16', 'etiquetas', '172.30.141.80'),
+    createData('16ALETQ02', 0, 'RG16', 'etiquetas', '172.30.141.81'),
+    createData('16ALETQ03', 0, 'RG16', 'etiquetas', '172.30.141.82'),
+    createData('16ALEXP01', 0, 'RG16', 'papel', '172.30.141.248'),
+    createData('16ALJEF01', 0, 'RG16', 'papel', '172.30.141.249'),
+    createData('17ADCOM01', 0, 'RG17', 'papel', '172.30.95.243'),
+    createData('17ALAV101', 0, 'RG17', 'papel', '172.30.95.247'),
+    createData('17ALAV102', 0, 'RG17', 'papel', '172.30.95.242'),
+    createData('17ALDEV01', 0, 'RG17', 'papel', '172.30.95.245'),
+    createData('17ALGVO01', 0, 'RG17', 'papel', '172.30.95.242'),
+    createData('17ALJEF01', 0, 'RG17', 'papel', '172.30.95.245'),
+    createData('17ATTOM01', 0, 'RG17', 'papel', '172.30.95.246'),
+    createData('18ALAV101', 0, 'RG18', 'papel', '172.30.120.246'),
+    createData('18ALAV102', 0, 'RG18', 'papel', '172.30.120.243'),
+    createData('18ALAV201', 0, 'RG18', 'papel', '172.30.120.246'),
+    createData('18ALAV202', 0, 'RG18', 'papel', '172.30.120.243'),
+    createData('18ALDEV01', 0, 'RG18', 'papel', '172.30.120.247'),
+    createData('18ALETQ01', 0, 'RG18', 'etiquetas', '172.30.120.80'),
+    createData('18ALETQ02', 0, 'RG18', 'etiquetas', '172.30.120.81'),
+    createData('18ALETQ03', 0, 'RG18', 'etiquetas', '172.30.120.82'),
+    createData('18ALEXP01', 0, 'RG18', 'papel', '172.30.120.245'),
+    createData('18ALJEF01', 0, 'RG18', 'papel', '172.30.120.248')
 ]
 
 
 //Funcion donde se definie la tabla con stickyhead
-export default function StickyHeadTable() {
+export const StickyHeadTable = () => {
 
-    const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(10);
-    const [almacen, setAlmacen] = React.useState('');
-    const [papel, setPapel] = React.useState('');
-    const [data, setData] = React.useState([]);
+    const [page, setPage] = useState(0);
+    const [rowsPerPage, setRowsPerPage] = useState(10);
+    const [almacen, setAlmacen] = useState('');
+    const [papel, setPapel] = useState('');
+    const [data, setData] = useState([]);
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -122,23 +122,27 @@ export default function StickyHeadTable() {
         setPage(0);
     };
 
-    const getImpresoras = async () => {
-        const res = await fetch('http://172.30.5.181:4444/impresoras');
-        const data = await res.json();
-        setData(data);
-        console.log({ data });
-    };
 
-    React.useEffect(() => {
-        const interval = setInterval(() => {
-            getImpresoras();
-        }, 6000);
-        return () => clearInterval(interval);
-    }, []);
+    // const getImpresoras = async () => {
+    //     const res = await fetch('http://172.30.5.181:4444/impresoras');
+    //     const data = await res.json();
+    //     setData(data);
+    //     console.log({ data });
+    //   };
+
+    const getImpresoras = useCallback(async () => {
+        const res = await fetch('http://172.30.5.181:4444/impresoras');
+        const newData = await res.json();
+        // console.log(data)
+
+        if (JSON.stringify(data) !== JSON.stringify(newData)) {
+            setData(newData);
+            console.log({ data: newData });
+        }
+    }, [data]);
 
     //Aquí insertamos en cada row el valor de números de impresión que recibimos por las props
     const actualizaDatosRow = () => {
-
         data.forEach((item) => {
             rows.find(printer => {
                 if (item.value.impresora === printer.nameImpresora) {
@@ -147,6 +151,26 @@ export default function StickyHeadTable() {
             })
         });
     }
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            getImpresoras();
+        }, 5000);
+        return () => clearInterval(interval);
+    }, [getImpresoras]);
+
+
+    // const useEffectFunction = useCallback(() => {
+    //     getImpresoras();
+
+    //     const interval = setInterval(() => {
+    //         getImpresoras();
+    //     }, 6000);
+    //     return () => clearInterval(interval);
+    // }, [getImpresoras]);
+
+
+    // useEffect(useEffectFunction, [useEffectFunction]);
 
     //Esta es la función que hace el filtro de los select, o lo intenta.
     const filterSelects = () => {
@@ -175,9 +199,9 @@ export default function StickyHeadTable() {
         return arrFilteredTipo;
     }
 
+
     return (
         <>
-
             <div className="flexbox">
                 <img className="logo" src='../../images/LogoHefame.png'></img>
                 <SelectAlmacen
@@ -190,7 +214,7 @@ export default function StickyHeadTable() {
                 />
             </div>
             <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-                <TableContainer sx={{ maxHeight: 600 }}>
+                <TableContainer sx={{ maxHeight: 800 }}>
                     <Table stickyHeader aria-label="sticky table">
                         <TableHead>
                             <TableRow>
@@ -212,7 +236,7 @@ export default function StickyHeadTable() {
                                 : filterSelects()
                             ).map((row) => {
                                 return (
-                                    <TableRows key={row.nameImpresora} props={row} data={data} />
+                                    <TableRows key={row.nameImpresora} row={row} data={data} />
                                 );
                             })}
                         </TableBody>

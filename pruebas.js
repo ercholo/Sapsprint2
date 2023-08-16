@@ -457,20 +457,222 @@ Estado de error detectado Desconocido
 Estado de error detectado extendido Desconocido`
 
 
+const ipString = 
+`Microsoft (R) Windows Script Host versión 5.812
+Copyright (C) Microsoft Corporation. Reservados todos los derechos.
+
+Nombre de servidor SAPSPRINT2
+Nombre de impresora 16alav201
+Nombre del recurso compartido 16ALAV201
+Nombre de controlador Ricoh Aficio SP 8100DN PS
+Nombre del puerto 172.30.141.245
+Comentario Punto AV2. Sector 1
+Ubicación Tortosa
+Archivo separador
+Procesador de impresión winprint
+Tipo de datos RAW
+Parámetros
+Prioridad 1
+Prioridad predeterminada 0
+Impresora siempre disponible
+Atributos local shared do_complete_first
+
+Estado de la impresora Inactivo
+Estado de impresora extendido Desconocido
+Estado de error detectado Desconocido
+Estado de error detectado extendido Desconocido`
+
+
+
 // const regId =  /\d*?$/gim;
 
 const regFechaPrimerTrabajo = /^(hora|time).*?$/im;
 
-
-
-
-
 const sinConexionReg = /Sin conexión|offline/gim;
 
-const prueba = sinConexion.match(sinConexionReg)
+const regIp = /172\.30\.\d+\.\d+/g;
 
-
+const prueba = ipString.match(regIp)
 
 console.log(prueba)
+
+const ip = "172.30.141.245";
+let desviada = false;
+const printer = "18ALAV201"
+let impresoraDesvio = "";
+
+
+
+// console.log(prueba)
+
+const impresorasIP = [
+    {
+        impresora: "16ALAV101",
+        ip: "172.30.141.243"
+    },
+    {
+        impresora: "16ALAV201",
+        ip: "172.30.141.245"
+    },
+    {
+        impresora: "16ALAV102",
+        ip: "172.30.141.244"
+    },
+    {
+        impresora: "16ALAV202",
+        ip: "172.30.141.246"
+    },
+    {
+        impresora: "16ALDEV01",
+        ip: "172.30.141.247"
+    },
+    {
+        impresora: "16ALETQ01",
+        ip: "172.30.141.80"
+    },
+    {
+        impresora: "16ALETQ02",
+        ip: "172.30.141.81"
+    },
+    {
+        impresora: "16ALETQ03",
+        ip: "172.30.141.82"
+    },
+    {
+        impresora: "16ALEXP01",
+        ip: "172.30.141.248"
+    },
+    {
+        impresora: "16ALJEF01",
+        ip: "172.30.141.249"
+    },
+    {
+        impresora: "17ADCOM01",
+        ip: "172.30.95.243"
+    },
+    {
+        impresora: "17ALAV101",
+        ip: "172.30.95.247"
+    },
+    {
+        impresora: "17ALAV102",
+        ip: "172.30.95.242"
+    },
+    {
+        impresora: "17ALDEV01",
+        ip: "172.30.95.245"
+    },
+    {
+        impresora: "17ALGVO01",
+        ip: "172.30.95.242"
+    },
+    {
+        impresora: "17ALJEF01",
+        ip: "172.30.95.245"
+    },
+    {
+        impresora: "17ATTOM01",
+        ip: "172.30.141.246"
+    },
+    {
+        impresora: "18ALAV101",
+        ip: "172.30.120.246"
+    },
+    {
+        impresora: "18ALAV102",
+        ip: "172.30.120.243"
+    },
+    {
+        impresora: "18ALAV201",
+        ip: "172.30.120.246"
+    },
+    {
+        impresora: "18ALAV202",
+        ip: "172.30.120.243"
+    },
+    {
+        impresora: "18ALDEV01",
+        ip: "172.30.120.247"
+    },
+    {
+        impresora: "18ALETQ01",
+        ip: "172.30.120.80"
+    },
+    {
+        impresora: "18ALETQ02",
+        ip: "172.30.120.81"
+    },
+    {
+        impresora: "18ALETQ03",
+        ip: "172.30.120.82"
+    },
+    {
+        impresora: "18ALEXP01",
+        ip: "172.30.120.245"
+    },
+    {
+        impresora: "18ALJEF01",
+        ip: "172.30.120.248"
+    }
+]
+
+
+const ipString1 = 
+`Microsoft (R) Windows Script Host versión 5.812
+Copyright (C) Microsoft Corporation. Reservados todos los derechos.
+
+Nombre de servidor SAPSPRINT2
+Nombre de impresora 18ALAV201
+Nombre del recurso compartido 18ALAV201
+Nombre de controlador Ricoh Aficio SP 8100DN PS
+Nombre del puerto 172.30.120.246
+Comentario AV2 Sector 1
+Ubicación Granada
+Archivo separador
+Procesador de impresión winprint
+Tipo de datos RAW
+Parámetros
+Prioridad 1
+Prioridad predeterminada 0
+Impresora siempre disponible
+Atributos local shared do_complete_first
+
+Estado de la impresora Inactivo
+Estado de impresora extendido Desconocido
+Estado de error detectado Desconocido
+Estado de error detectado extendido Desconocido`
+
+// for ( let impresora of impresorasIP) {
+
+//     if ( impresora.impresora === "18ALAV201" && ip === impresora.ip) {
+
+//         desviada = false;
+
+//     } else if ( impresora.impresora === "18ALAV201" && ip != impresora.ip) {
+
+//         console.log(impresora.impresora)
+//         desviada = true;
+//         impresoraDesvio = impresorasIP.find(impresora => impresora.ip === ip)
+//         console.log(impresoraDesvio)
+
+//     }
+
+// }
+
+// for ( const impresora of impresorasIP) {
+
+//     if ( impresora.impresora === printer && ip === impresora.ip) {
+
+//         desviada = false;
+
+//     } else if ( impresora.impresora === printer && ip != impresora.ip) {
+
+//         desviada = true;
+//         impresoraDesvio = impresorasIP.find(impresora => impresora.ip === ip)
+
+//     }
+
+// }
+
 
 

@@ -5,11 +5,11 @@ export const BotonDesviar = (nombreImpresora) => {
 
     const printer = nombreImpresora.property;
 
-    const [isDisabled, setDisabled] = useState(false);
+    // const [isDisabled, setDisabled] = useState(false);
 
     const handleClick = async () => {
 
-        setDisabled(true);
+        // setDisabled(true);
         // La función para manejar el punchar el botón ¿fetch?
         console.log(`Desviar la impresora ${printer}`);
 
@@ -31,7 +31,7 @@ export const BotonDesviar = (nombreImpresora) => {
 
         <Button
             variant="contained"
-            disabled = {isDisabled}
+            // disabled = {isDisabled}
             onClick={() =>
                 handleClick(printer)
             }>

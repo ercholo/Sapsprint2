@@ -1,5 +1,5 @@
 import './App.css'
-import StickyHeadTable from './components/tablas';
+import {StickyHeadTable} from './components/tablas'
 
 const App = () => {
 

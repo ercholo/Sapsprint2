@@ -1,36 +1,36 @@
 import { Button } from '@mui/material';
-import {useState} from 'react';
-import { AlertDialogSlide } from './DialogEstado';
+import { useState, useEffect, useCallback } from 'react';
+import { AlertDialogSlide } from './dialogEstado';
 
 export const BotonEstado = (nombreImpresora) => {
 
     const printer = nombreImpresora.property;
-    const [ openDialog, setOpenDialog ] = useState(false);
-    const [estado, setEstado] = useState("");
+    const [openDialog, setOpenDialog] = useState(false);
+    const [estado, setEstado] = useState({});
 
 
-    const handleClick = async () => {
+    const handleClick = useCallback(async (printer) => {
 
-        // setDisabled(true);
-        // La función para manejar el punchar el botón ¿fetch?
         console.log(`Boton estado por la impresora ${printer}`);
 
         try {
             const res = await fetch(`http://172.30.5.181:4444/impresoras/${printer}/estado`, {
                 method: 'GET'
-            })
+            });
             const data = await res.json();
             console.log(data);
             setEstado(data);
-            // if(data) {setDisabled(false)}
-
         } catch (error) {
             console.log(error);
         }
+    }, []);
 
-    }
+    //Lo ejecuta una vez para todas las impresoras
+    // useEffect(() => {
+    //     handleClick();
+    // }, [handleClick]);
 
-    
+
     const handleOpenDialog = async () => {
         console.log("abro el dialogo");
         await handleClick(printer);
@@ -39,13 +39,13 @@ export const BotonEstado = (nombreImpresora) => {
 
     return (
         <>
-        <Button
-            variant="contained"
-            // disabled = {isDisabled}
-            onClick={handleOpenDialog}>
-            Estado
-        </Button>
-        <AlertDialogSlide openDialog={openDialog} setOpenDialog={setOpenDialog} estado={estado}/>
+            <Button
+                variant="contained"
+                // disabled = {isDisabled}
+                onClick={handleOpenDialog}>
+                Estado
+            </Button>
+            <AlertDialogSlide openDialog={openDialog} setOpenDialog={setOpenDialog} estado={estado} />
         </>
     )
 }
