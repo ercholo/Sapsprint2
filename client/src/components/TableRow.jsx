@@ -36,7 +36,7 @@ export const TableRows = React.memo(({row, data}) => {
                 {row.numAlmacen}
             </TableCell>
             <TableCell sx={{ fontWeight: 'bold' }}style={{ width: 160 }} align="left">
-                <BotonPausa property={row.nameImpresora} />
+                <BotonPausa printer={row.nameImpresora} />
             </TableCell>
             <TableCell style={{ width: 160 }} align="left">
                 <BotonReanudar property={row.nameImpresora} />

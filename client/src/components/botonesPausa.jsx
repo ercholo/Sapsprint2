@@ -1,13 +1,13 @@
 import { Button } from '@mui/material';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
-export const BotonPausa = (nombreImpresora) => {
+export const BotonPausa = ({printer}) => {
 
-    const printer = nombreImpresora.property;
-
+    // const printer = nombreImpresora.property;
     const [buttonText, setButtonText] = useState('Pausar');
 
-    const handleClick = async () => {
+    const handleClick = async (printer) => {
 
         // La función para manejar el punchar el botón ¿fetch?
         console.log(`Boton pulsado por la impresora ${printer}`);
@@ -35,4 +35,8 @@ export const BotonPausa = (nombreImpresora) => {
             {buttonText}
         </Button>
     )
+}
+
+BotonPausa.propTypes = {
+    printer: PropTypes.string
 }

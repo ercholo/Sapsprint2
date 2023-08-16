@@ -1,10 +1,10 @@
 import { Button } from '@mui/material';
-import { useState, useEffect, useCallback } from 'react';
+import PropTypes from 'prop-types';
+import { useState, useCallback } from 'react';
 import { AlertDialogSlide } from './dialogEstado';
 
-export const BotonEstado = (nombreImpresora) => {
+export const BotonEstado = ({printer}) => {
 
-    const printer = nombreImpresora.property;
     const [openDialog, setOpenDialog] = useState(false);
     const [estado, setEstado] = useState({});
 
@@ -48,4 +48,8 @@ export const BotonEstado = (nombreImpresora) => {
             <AlertDialogSlide openDialog={openDialog} setOpenDialog={setOpenDialog} estado={estado} />
         </>
     )
+}
+
+BotonEstado.propTypes = {
+    printer: PropTypes.string
 }

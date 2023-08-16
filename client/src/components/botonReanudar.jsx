@@ -1,10 +1,9 @@
 import { Button } from '@mui/material';
+import PropTypes from 'prop-types';
 
-export const BotonReanudar = (nombreImpresora) => {
+export const BotonReanudar = ({printer}) => {
 
-    const printer = nombreImpresora.property;
-
-    const handleClick = async () => {
+    const handleClick = async (printer) => {
 
         // La función para manejar el punchar el botón ¿fetch?
         console.log(`Boton reanudado por la impresora ${printer}`);
@@ -31,4 +30,8 @@ export const BotonReanudar = (nombreImpresora) => {
             Reanudar
         </Button>
     )
+}
+
+BotonReanudar.propTypes = {
+    printer: PropTypes.string
 }

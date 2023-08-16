@@ -1,13 +1,12 @@
 import { Button } from '@mui/material';
-import {useState} from 'react';
+import PropTypes from 'prop-types';
+// import {useState} from 'react';
 
-export const BotonDesviar = (nombreImpresora) => {
-
-    const printer = nombreImpresora.property;
+export const BotonDesviar = ({printer}) => {
 
     // const [isDisabled, setDisabled] = useState(false);
 
-    const handleClick = async () => {
+    const handleClick = async (printer) => {
 
         // setDisabled(true);
         // La función para manejar el punchar el botón ¿fetch?
@@ -38,4 +37,8 @@ export const BotonDesviar = (nombreImpresora) => {
             Desviar
         </Button>
     )
+}
+
+BotonDesviar.propTypes = {
+    printer: PropTypes.string
 }
