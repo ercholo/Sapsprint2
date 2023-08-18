@@ -325,184 +325,234 @@ Extended detected error state Low toner`
 
 
 const primerTrabajo = 
-`Microsoft (R) Windows Script Host Version 5.812
-Copyright (C) Microsoft Corporation. All rights reserved.
+`Microsoft (R) Windows Script Host versión 5.812
+Copyright (C) Microsoft Corporation. Reservados todos los derechos.
 
-Id. de trabajo 24
+
+Id. de trabajo 1980
 Impresora 18ALETQ02
-Documento RADIO18/P010000586504_1
+Documento Página de prueba
 Tipo de datos RAW
 Nombre de controlador Generic / Text Only
-Descripción 18ALETQ02, 24
-Nombre del equipo \\SAPSPRINT2
-Notificar SYSTEM
-Propietario SYSTEM
+Descripción 18ALETQ02, 1980
+Nombre del equipo CPD21
+Notificar gregorio.sanchez
+Propietario gregorio.sanchez
 Páginas imprimidas 0
 Parámetros
-Tamaño 3953
+Tamaño 1800
 SizeHigh 0
 PaperSize A4 210 x 297 mm
 PaperWidth 2100
 PaperLength 2970
 Color MonoChrome
 Estado Error asociado al trabajo El trabajo se está imprimiendo
-Hora de envío 12/28/2022 12:21:31
-Número total de páginas 0
+Hora de envío 08/01/2023 16:57:44
+Número total de páginas 1
 
-Id. de trabajo 25
+Id. de trabajo 1981
 Impresora 18ALETQ02
-Documento RADIO18/P010000586505_1
+Documento Página de prueba
 Tipo de datos RAW
 Nombre de controlador Generic / Text Only
-Descripción 18ALETQ02, 25
+Descripción 18ALETQ02, 1981
 Tiempo transcurrido 00:00:00
-Nombre del equipo \\SAPSPRINT2
-Notificar SYSTEM
-Propietario SYSTEM
+Nombre del equipo CPD21
+Notificar gregorio.sanchez
+Propietario gregorio.sanchez
 Páginas imprimidas 0
 Parámetros
-Tamaño 3953
+Tamaño 1800
 SizeHigh 0
 PaperSize A4 210 x 297 mm
 PaperWidth 2100
 PaperLength 2970
 Color MonoChrome
 Estado
-Hora de envío 12/28/2022 12:21:31
+Hora de envío 08/01/2023 17:00:10
+Número total de páginas 1
+
+Id. de trabajo 1941
+Impresora 18ALETQ02
+Documento Página de prueba
+Tipo de datos RAW
+Nombre de controlador Generic / Text Only
+Descripción 18ALETQ02, 1941
+Tiempo transcurrido 00:00:00
+Nombre del equipo CPD21
+Notificar gregorio.sanchez
+Propietario gregorio.sanchez
+Páginas imprimidas 0
+Parámetros
+Tamaño 1800
+SizeHigh 0
+PaperSize A4 210 x 297 mm
+PaperWidth 2100
+PaperLength 2970
+Color MonoChrome
+Estado
+Hora de envío 08/03/2023 17:05:26
+Número total de páginas 1
+
+Id. de trabajo 924
+Impresora 18ALETQ02
+Documento RADIO18/P010000872822_1
+Tipo de datos RAW
+Nombre de controlador Generic / Text Only
+Descripción 18ALETQ02, 924
+Tiempo transcurrido 00:00:00
+Nombre del equipo \\SAPSPRINT2
+Notificar SYSTEM
+Propietario SYSTEM
+Páginas imprimidas 0
+Parámetros
+Tamaño 2743
+SizeHigh 0
+PaperSize A4 210 x 297 mm
+PaperWidth 2100
+PaperLength 2970
+Color MonoChrome
+Estado
+Hora de envío 08/07/2023 14:50:31
 Número total de páginas 0
 
-Microsoft (R) Windows Script Host Version 5.812
-Copyright (C) Microsoft Corporation. All rights reserved.
-Job id 24
-Printer 18ALETQ02
-Document Print Document
-Data type RAW
-Driver name Generic / Text Only
-Description 18ALETQ02, 24
-Machine name \\SAPSPRINT2
-Notify SYSTEM
-Owner SYSTEM
-Pages printed 0
-Parameters
-Size 3953
+Id. de trabajo 925
+Impresora 18ALETQ02
+Documento RADIO18/P010000872821_1
+Tipo de datos RAW
+Nombre de controlador Generic / Text Only
+Descripción 18ALETQ02, 925
+Tiempo transcurrido 00:00:00
+Nombre del equipo \\SAPSPRINT2
+Notificar SYSTEM
+Propietario SYSTEM
+Páginas imprimidas 0
+Parámetros
+Tamaño 2743
 SizeHigh 0
 PaperSize A4 210 x 297 mm
 PaperWidth 2100
 PaperLength 2970
 Color MonoChrome
-Status An error is associated with the job Job is printing
-Time submitted 12/28/2022 12:21:31
-Total pages 0
+Estado
+Hora de envío 08/07/2023 14:50:31
+Número total de páginas 0
 
-Job id 25
-Printer 18ALETQ02
-Document Print Document
-Data type RAW
-Driver name Generic / Text Only
-Description 18ALETQ02, 25
-Elapsed time 00:00:00
-Machine name \\SAPSPRINT2
-Notify SYSTEM
-Owner SYSTEM
-Pages printed 0
-Parameters
-Size 3953
+Id. de trabajo 928
+Impresora 18ALETQ02
+Documento RADIO18/P010000872859_1
+Tipo de datos RAW
+Nombre de controlador Generic / Text Only
+Descripción 18ALETQ02, 928
+Tiempo transcurrido 00:00:00
+Nombre del equipo \\SAPSPRINT2
+Notificar SYSTEM
+Propietario SYSTEM
+Páginas imprimidas 0
+Parámetros
+Tamaño 2743
 SizeHigh 0
 PaperSize A4 210 x 297 mm
 PaperWidth 2100
 PaperLength 2970
 Color MonoChrome
-Status
-Time submitted 12/28/2022 12:21:31
-Total pages 0`;
+Estado
+Hora de envío 08/07/2023 14:51:11
+Número total de páginas 0
+
+Id. de trabajo 929
+Impresora 18ALETQ02
+Documento RADIO18/P010000872860_1
+Tipo de datos RAW
+Nombre de controlador Generic / Text Only
+Descripción 18ALETQ02, 929
+Tiempo transcurrido 00:00:00
+Nombre del equipo \\SAPSPRINT2
+Notificar SYSTEM
+Propietario SYSTEM
+Páginas imprimidas 0
+Parámetros
+Tamaño 2743
+SizeHigh 0
+PaperSize A4 210 x 297 mm
+PaperWidth 2100
+PaperLength 2970
+Color MonoChrome
+Estado
+Hora de envío 08/07/2023 14:51:11
+Número total de páginas 0
+
+Id. de trabajo 935
+Impresora 18ALETQ02
+Documento RADIO18/P010000873130_1
+Tipo de datos RAW
+Nombre de controlador Generic / Text Only
+Descripción 18ALETQ02, 935
+Tiempo transcurrido 00:00:00
+Nombre del equipo \\SAPSPRINT2
+Notificar SYSTEM
+Propietario SYSTEM
+Páginas imprimidas 0
+Parámetros
+Tamaño 2743
+SizeHigh 0
+PaperSize A4 210 x 297 mm
+PaperWidth 2100
+PaperLength 2970
+Color MonoChrome
+Estado
+Hora de envío 08/07/2023 14:53:04
+Número total de páginas 0
+
+Id. de trabajo 936
+Impresora 18ALETQ02
+Documento RADIO18/P010000873126_1
+Tipo de datos RAW
+Nombre de controlador Generic / Text Only
+Descripción 18ALETQ02, 936
+Tiempo transcurrido 00:00:00
+Nombre del equipo \\SAPSPRINT2
+Notificar SYSTEM
+Propietario SYSTEM
+Páginas imprimidas 0
+Parámetros
+Tamaño 2743
+SizeHigh 0
+PaperSize A4 210 x 297 mm
+PaperWidth 2100
+PaperLength 2970
+Color MonoChrome
+Estado
+Hora de envío 08/07/2023 14:53:04
+Número total de páginas 0
+
+Número de trabajos de impresión enumerados 9`
 
 
-// const result = sinPapel.match(/No\s\hay\s\papel|no\s\paper/gi);
-
-// const sinPapell = /No\s\hay\s\papel|no\s\paper/gi;
-
-// const regHoraPrimerTrabajo = /^(hora|time).*?$/gim; 
 
 // const regId =  /\d*?$/gim;
 
 
 
+// const match = primerTrabajo.match(regExp);
 
-// const regid = /trabajo.(\d+)/i
+// const sinConexionReg = /Sin conexión|offline/gim;
 
-// const prueba = primerTrabajo.match(regid)
-const devuelveMal = 
-`Microsoft (R) Windows Script Host versión 5.812
-Copyright (C) Microsoft Corporation. Reservados todos los derechos.
-
-Nombre de servidor SAPSPRINT2
-Nombre de impresora 16ALEXP01
-Nombre del recurso compartido 16ALEXP01
-Nombre de controlador Ricoh Aficio SP 8100DN PS
-Nombre del puerto 172.30.141.248
-Comentario Expediciones
-Ubicación Tortosa
-Archivo separador
-Procesador de impresión winprint
-Tipo de datos RAW
-Parámetros
-Prioridad 1
-Prioridad predeterminada 0
-Impresora siempre disponible
-Atributos local shared do_complete_first
-
-Estado de la impresora Inactivo
-Estado de impresora extendido Desconocido
-Estado de error detectado Desconocido
-Estado de error detectado extendido Desconocido`
-
-
-const ipString = 
-`Microsoft (R) Windows Script Host versión 5.812
-Copyright (C) Microsoft Corporation. Reservados todos los derechos.
-
-Nombre de servidor SAPSPRINT2
-Nombre de impresora 16alav201
-Nombre del recurso compartido 16ALAV201
-Nombre de controlador Ricoh Aficio SP 8100DN PS
-Nombre del puerto 172.30.141.245
-Comentario Punto AV2. Sector 1
-Ubicación Tortosa
-Archivo separador
-Procesador de impresión winprint
-Tipo de datos RAW
-Parámetros
-Prioridad 1
-Prioridad predeterminada 0
-Impresora siempre disponible
-Atributos local shared do_complete_first
-
-Estado de la impresora Inactivo
-Estado de impresora extendido Desconocido
-Estado de error detectado Desconocido
-Estado de error detectado extendido Desconocido`
+// const regIp = /172\.30\.\d+\.\d+/g;
 
 
 
-// const regId =  /\d*?$/gim;
+// const ip = "172.30.141.245";
+// let desviada = false;
+// const printer = "18ALAV201"
+// let impresoraDesvio = "";
+
+const regId =  /Id\. de trabajo (\d+)(?=\n\n|[\s\S]*$)/;
+const prueba = primerTrabajo.match(regId)
+console.log(prueba[1])
+
 
 const regFechaPrimerTrabajo = /^(hora|time).*?$/im;
-
-const sinConexionReg = /Sin conexión|offline/gim;
-
-const regIp = /172\.30\.\d+\.\d+/g;
-
-const prueba = ipString.match(regIp)
-
-console.log(prueba)
-
-const ip = "172.30.141.245";
-let desviada = false;
-const printer = "18ALAV201"
-let impresoraDesvio = "";
-
-
-
 // console.log(prueba)
 
 const impresorasIP = [

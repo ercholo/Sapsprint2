@@ -1,7 +1,8 @@
 const { exec } = require('child_process');
 const regexNumImp = /\d+$/g;
 const regexError = /error/gi;
-const regFechaPrimerTrabajo = /^(hora|time).*?$/gim;
+// const regFechaPrimerTrabajo = /^(hora|time).*?$/gim;
+const regFechaPrimerTrabajo = /(\d{2}\/\d{2}\/\d{4} \d{2}:\d{2}:\d{2})/;
 let fechaPrimerTrabajo = "";
 const regId =  /trabajo.(\d+)/i;
 let idPrimerTrabajo = 1;
@@ -11,7 +12,7 @@ const trabajos = (printer) => {
 
     return new Promise((resolve, reject) => {
 
-        exec(`cscript prnjobs.vbs -l -s sapsprint2 -p ${printer}`, { cwd: 'C:\\Windows\\System32\\Printing_Admin_Scripts\\es-ES' }, (error, stdout, stderr) => {
+        exec(`cscript prnjobs.vbs -l -s sapsprint2 -p ${printer}`, { cwd: 'C:\\Windows\\System32\\Printing_Admin_Scripts\\es-ES', encoding: 'latin1' }, (error, stdout, stderr) => {
 
             //Si hay errores, que los muestre
             if (error) {
@@ -24,7 +25,6 @@ const trabajos = (printer) => {
             const result = stdout.replace(/\r\n/g, '').match(regexNumImp);
             fechaPrimerTrabajo = stdout.match(regFechaPrimerTrabajo);
             idPrimerTrabajo = stdout.match(regId);
-
 
             //Si la impresora tiene un "error" en el stdout devuelvo true en el campo "error"
             if (stdout.match(regexError)) {
@@ -56,12 +56,8 @@ const trabajos = (printer) => {
                     idUltimoTrabajo: idPrimerTrabajo[1]
                 }
             );
-        }
-
-        );
-
+        });
     });
-
 };
 
 module.exports = trabajos;

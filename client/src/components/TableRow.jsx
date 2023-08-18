@@ -25,27 +25,26 @@ export const TableRows = React.memo(({row, data}) => {
     return (
         
         <TableRow key={row.nameImpresora} hover={true} className={getBackgroundColor(row.nameImpresora) === undefined ? styles.white : styles.red}>
-            <TableCell sx={{ fontWeight: 'bold', color: 'blue', fontSize: 16 }} component="th" scope="row" >
+            <TableCell sx={{ fontWeight: 'bold', color: '#1563B0', fontSize: 18 }} component="th" scope="row" >
                 {row.nameImpresora}
             </TableCell>
-            <TableCell sx={{ fontWeight: 'bold', color: 'blue', fontSize: 16 }} style={{ width: 160 }} align="center" fontWeight= "bold">
+            <TableCell sx={{ fontWeight: 'bold', color: '#1873CC', fontSize: 18 }} style={{ width: 160 }} align="center" fontWeight= "bold">
                 {row.numTrabajos}
             </TableCell>
-            <TableCell sx={{ fontWeight: 'bold', color: 'blue', fontSize: 16 }} style={{ width: 160 }} align="left">
-                {/* {console.log("renderizo")} */}
+            <TableCell sx={{ fontWeight: 'bold', color: '#1873CC', fontSize: 18 }} style={{ width: 160 }} align="left">
                 {row.numAlmacen}
             </TableCell>
             <TableCell sx={{ fontWeight: 'bold' }}style={{ width: 160 }} align="left">
                 <BotonPausa printer={row.nameImpresora} />
             </TableCell>
             <TableCell style={{ width: 160 }} align="left">
-                <BotonReanudar property={row.nameImpresora} />
+                <BotonReanudar printer={row.nameImpresora} />
             </TableCell>
             <TableCell style={{ width: 160 }} align="left">
-                <BotonEstado property={row.nameImpresora} />
+                <BotonEstado printer={row.nameImpresora} />
             </TableCell>
             <TableCell style={{ width: 160 }} align="left">
-                <BotonDesviar property={row.nameImpresora} />
+                <BotonDesviar printer={row.nameImpresora} />
             </TableCell>
         </TableRow>
     )

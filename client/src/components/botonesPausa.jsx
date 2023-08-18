@@ -1,6 +1,7 @@
 import { Button } from '@mui/material';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import PauseIcon from '@mui/icons-material/Pause';
 
 export const BotonPausa = ({printer}) => {
 
@@ -21,14 +22,15 @@ export const BotonPausa = ({printer}) => {
             
         } catch (error)      {
             console.log(error);
-        }
-        
+        }        
         setButtonText('Pausar');        
     }
   
     return (
 
-        <Button variant="contained"
+        <Button 
+            variant="contained"
+            startIcon={<PauseIcon />}
             onClick={() =>
                 handleClick(printer)
             }>

@@ -27,7 +27,6 @@ const pausar = (printer) => {
             );
         });
     });
-
 };
 
 module.exports = pausar;

@@ -1,5 +1,6 @@
 import { Button } from '@mui/material';
 import PropTypes from 'prop-types';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
 export const BotonReanudar = ({printer}) => {
 
@@ -17,13 +18,14 @@ export const BotonReanudar = ({printer}) => {
                     
         } catch (error)      {
             console.log(error);
-        }
-        
+        }     
     }
 
     return (
 
-        <Button variant="contained"
+        <Button 
+            variant="contained"
+            startIcon={<PlayArrowIcon />}
             onClick={() =>
                 handleClick(printer)
             }>

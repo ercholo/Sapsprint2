@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState} from 'react';
+import { useCallback, useEffect, useState, useMemo} from 'react';
 import PropTypes from 'prop-types';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -8,7 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { TableRows } from './tableRow';
+import { TableRows } from './TableRow';
 import { SelectAlmacen } from './selectAlmacen';
 import { SelectTipoPapel } from './selectTipoPapel';
 
@@ -91,6 +91,9 @@ const rows = [
     createData('17ALGVO01', 0, 'RG17', 'papel', '172.30.95.242'),
     createData('17ALJEF01', 0, 'RG17', 'papel', '172.30.95.245'),
     createData('17ATTOM01', 0, 'RG17', 'papel', '172.30.95.246'),
+    createData('17ALETQ00', 0, 'RG17', 'etiquetas', '172.30.95.80'),
+    createData('17ALETQ01', 0, 'RG17', 'etiquetas', '172.30.95.81'),
+    createData('17ALETQ02', 0, 'RG17', 'etiquetas', '172.30.95.82'),
     createData('18ALAV101', 0, 'RG18', 'papel', '172.30.120.246'),
     createData('18ALAV102', 0, 'RG18', 'papel', '172.30.120.243'),
     createData('18ALAV201', 0, 'RG18', 'papel', '172.30.120.246'),
@@ -123,17 +126,9 @@ export const StickyHeadTable = () => {
     };
 
 
-    // const getImpresoras = async () => {
-    //     const res = await fetch('http://172.30.5.181:4444/impresoras');
-    //     const data = await res.json();
-    //     setData(data);
-    //     console.log({ data });
-    //   };
-
     const getImpresoras = useCallback(async () => {
         const res = await fetch('http://172.30.5.181:4444/impresoras');
         const newData = await res.json();
-        // console.log(data)
 
         if (JSON.stringify(data) !== JSON.stringify(newData)) {
             setData(newData);
@@ -198,7 +193,6 @@ export const StickyHeadTable = () => {
         actualizaDatosRow();
         return arrFilteredTipo;
     }
-
 
     return (
         <>

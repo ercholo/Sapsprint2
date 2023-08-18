@@ -1,14 +1,11 @@
 import { Button } from '@mui/material';
+import AltRouteIcon from '@mui/icons-material/AltRoute';
 import PropTypes from 'prop-types';
-// import {useState} from 'react';
 
 export const BotonDesviar = ({printer}) => {
 
-    // const [isDisabled, setDisabled] = useState(false);
-
     const handleClick = async (printer) => {
 
-        // setDisabled(true);
         // La función para manejar el punchar el botón ¿fetch?
         console.log(`Desviar la impresora ${printer}`);
 
@@ -30,6 +27,7 @@ export const BotonDesviar = ({printer}) => {
 
         <Button
             variant="contained"
+            startIcon={<AltRouteIcon />}
             // disabled = {isDisabled}
             onClick={() =>
                 handleClick(printer)

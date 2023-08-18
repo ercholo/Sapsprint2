@@ -77,7 +77,19 @@ const impresorasIP = [
     },
     {
         impresora: "17ATTOM01",
-        ip: "172.30.141.246"
+        ip: "172.30.95.246"
+    },
+    {
+        impresora: "17ALETQ00",
+        ip: "172.30.95.80"
+    },
+    {
+        impresora: "17ALETQ01",
+        ip: "172.30.95.81"
+    },
+    {
+        impresora: "17ALETQ02",
+        ip: "172.30.95.82"
     },
     {
         impresora: "18ALAV101",
@@ -131,6 +143,7 @@ const estados = (printer) => {
 
             ip = stdout.match(regIp);
             
+            //Comparo el puerto del stdout con el puerto que tiene predefinido la impresora. Si hay diferencias es que está desviada.
             for ( let impresora of impresorasIP) {
 
                 if ( impresora.impresora === printer && ip[0] === impresora.ip) {
@@ -246,12 +259,8 @@ const estados = (printer) => {
             //     resolve("+500");
             // }; 
 
-
-        }
-        );
-
+        });
     });
-
 };
 
 module.exports = estados;
