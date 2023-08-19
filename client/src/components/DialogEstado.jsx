@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { BotonCancelar } from './botonCancelarTrabajo';
+import { BotonDesviaIpOriginal } from './botonDesviaIpOriginal';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -61,6 +62,8 @@ export const AlertDialogSlide = ({ setOpenDialog, openDialog, estado, ultTrabajo
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
+                    {/*si no existe valor de id es que no hay trabajos para cancelar, entonces deshabilito el BotonCancelar.*/}
+                    <BotonDesviaIpOriginal printer={estado.impresora} isDisabled={estado.desviada?false:true} />
                     {/*si no existe valor de id es que no hay trabajos para cancelar, entonces deshabilito el BotonCancelar.*/}
                     <BotonCancelar printer={estado.impresora} id={ultTrabajo.idUltimoTrabajo} isDisabled={ultTrabajo.idUltimoTrabajo === null || ultTrabajo.idUltimoTrabajo === undefined?true:false} />
                     <Button onClick={handleClose}>Cerrar</Button>

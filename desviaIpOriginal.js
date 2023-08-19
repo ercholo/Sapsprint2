@@ -123,28 +123,23 @@ const impresorasIP = [
     }
 ]
 
+const regEnSuSitioOriginal = /(Impresora configurada|Configured printer)/gi;
+let desviadaOriginal = Boolean;
+let ip = String
+
 const desviarImpresora = (printer) => {
+
+    for (let impresora of impresorasIP) {
+        if (impresora.impresora === printer) {
+            ip = impresora.ip;
+        }
+    }
 
     return new Promise((resolve, reject) => {
 
-        exec(`cscript prncnfg.vbs -t -s sapsprint2 -p ${printer} -r ${ip}`, { cwd: 'C:\\Windows\\System32\\Printing_Admin_Scripts\\es-ES'}, (error, stdout, stderr) => {
+        exec(`cscript prncnfg.vbs -t -s sapsprint2 -p ${printer} -r ${ip}`, { cwd: 'C:\\Windows\\System32\\Printing_Admin_Scripts\\es-ES' }, (error, stdout, stderr) => {
 
-            // console.log(stdout)
-
-            for (let impresora of impresorasIP) {
-
-                if (impresora.impresora === printer && ip[0] === impresora.ip) {
-
-                    desviada = false;
-
-                } else if (impresora.impresora === printer && ip[0] != impresora.ip) {
-
-                    console.log(ip[0])
-                    desviada = true;
-                    impresoraDesvio = impresorasIP.find(impresora => impresora.ip === ip[0])
-                    console.log(impresoraDesvio)
-                }
-            }
+            console.log(stdout)
 
             //Si hay errores, que los muestre
             if (error) {
@@ -153,15 +148,16 @@ const desviarImpresora = (printer) => {
                 reject();
             };
 
-            //Busco el estado de la impresora en el stdout y lo devuelvo
-            if (stdout.match(regInactiva)) {
+            //Busca en el stdout si ha realizado la execución de manera correcta y la devuelvo.
+            if (stdout.match(regEnSuSitioOriginal)) {
+                desviadaOriginal = true
+            } else { desviadaOriginal = false }
 
-                resolve(
-                    {
-
-                    }
-                );
-            }
+            resolve(
+                {
+                    desviadaOriginal: desviadaOriginal
+                }
+            );
             //Si hay más de 500 lo dejo pasar, hay muchas impresoras averiadas con millones de trabajos
             // if (parseInt(result[0]) > 500) { 
             //     resolve("+500");

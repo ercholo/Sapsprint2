@@ -1,5 +1,5 @@
 const { exec } = require('child_process');
-const regexCorrecto = /Correcto/gi;
+const regexCorrecto = /(Correcto|Success)/gi;
 let pausa = Boolean;
 
 const pausar = (printer) => {

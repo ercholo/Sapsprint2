@@ -137,7 +137,7 @@ export const StickyHeadTable = () => {
     }, [data]);
 
     //Aquí insertamos en cada row el valor de números de impresión que recibimos por las props
-    const actualizaDatosRow = () => {
+    const actualizaDatosRow = useCallback(() => {
         data.forEach((item) => {
             rows.find(printer => {
                 if (item.value.impresora === printer.nameImpresora) {
@@ -145,7 +145,7 @@ export const StickyHeadTable = () => {
                 }
             })
         });
-    }
+    },[data]) 
 
     useEffect(() => {
         const interval = setInterval(() => {

@@ -547,9 +547,21 @@ Número de trabajos de impresión enumerados 9`
 // const printer = "18ALAV201"
 // let impresoraDesvio = "";
 
-const regId =  /Id\. de trabajo (\d+)(?=\n\n|[\s\S]*$)/;
+
+const puestaPorSuSitio = 
+`Microsoft (R) Windows Script Host versión 5.812
+Copyright (C) Microsoft Corporation. Reservados todos los derechos.
+
+Impresora configurada 18aletq03`
+
+// const regEnSuSitioOriginal = /(Impresora configurada|Configured printer)/gi;
+
+// const regId =  /Id\. de trabajo (\d+)(?=\n\n|[\s\S]*$)/;
+
+const regId =  /(trabajo|id).(\d+)/i;
+
 const prueba = primerTrabajo.match(regId)
-console.log(prueba[1])
+console.log(prueba[2])
 
 
 const regFechaPrimerTrabajo = /^(hora|time).*?$/im;

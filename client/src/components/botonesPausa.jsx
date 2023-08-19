@@ -5,7 +5,6 @@ import PauseIcon from '@mui/icons-material/Pause';
 
 export const BotonPausa = ({printer}) => {
 
-    // const printer = nombreImpresora.property;
     const [buttonText, setButtonText] = useState('Pausar');
 
     const handleClick = async (printer) => {
