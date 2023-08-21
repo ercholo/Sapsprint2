@@ -6,8 +6,7 @@ export const BotonDesviaIpOriginal = ({ printer, isDisabled }) => {
 
     const handleClick = async(printer) => {
 
-        console.log(`Impresora devuelta a su sitio original ${printer}`);
-        
+        console.log(`Impresora devuelta a su sitio original ${printer}`);    
 
         try {
             const res = await fetch(`http://172.30.5.181:4444/impresoras/${printer}/desviaIpOriginal`, {
@@ -26,7 +25,6 @@ export const BotonDesviaIpOriginal = ({ printer, isDisabled }) => {
     // useEffect(() => {
     //     handleClick();
     // }, [handleClick]);
-
 
     return (
         <>

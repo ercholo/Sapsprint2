@@ -1,6 +1,7 @@
-import * as React from 'react';
-import { BotonCancelar } from './botonCancelarTrabajo';
+import React, { useState, useEffect } from 'react';
 import { BotonDesviaIpOriginal } from './botonDesviaIpOriginal';
+import { BotonCancelar } from './botonCancelarTrabajo';
+import { BotonPagPrueba } from './botonPagPrueba'
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -15,22 +16,33 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export const AlertDialogSlide = ({ setOpenDialog, openDialog, estado, ultTrabajo }) => {
+export const AlertDialogSlide = ({ openDialog, setOpenDialog, estado, ultTrabajo }) => {
 
-    // console.log(ultTrabajo.fechaPrimerTrabajo)
-
-    // const handleClickOpen = () => {
-    //     setOpenDialog(true);
-    // };
-
-    // const isUltimoTrabajo = () => {
-
-    //     if ()
-    // }
+    const [isBotonCancelarDisabled, setIsBotonCancelarDisabled] = useState(ultTrabajo.idUltimoTrabajo === null);
 
     const handleClose = () => {
         setOpenDialog(false);
     };
+
+    useEffect(() => {
+        setIsBotonCancelarDisabled(ultTrabajo.idUltimoTrabajo === null);
+    }, [ultTrabajo.idUltimoTrabajo]);
+
+    const handleBotonCancelarClick = async () => {
+        console.log(`Trabajo cancelado por la impresora ${estado.impresora}`);
+
+        try {
+            const res = await fetch(`http://172.30.5.181:4444/impresoras/${estado.impresora}/${ultTrabajo.idUltimoTrabajo}/cancelarTrabajo`, {
+                method: 'GET'
+            });
+            const data = await res.json();
+            console.log(data);
+        } catch (error) {
+            console.log(error);
+        } finally {
+            setIsBotonCancelarDisabled(true);
+        }
+    }
 
     return (
         <div>
@@ -63,9 +75,13 @@ export const AlertDialogSlide = ({ setOpenDialog, openDialog, estado, ultTrabajo
                 </DialogContent>
                 <DialogActions>
                     {/*si no existe valor de id es que no hay trabajos para cancelar, entonces deshabilito el BotonCancelar.*/}
-                    <BotonDesviaIpOriginal printer={estado.impresora} isDisabled={estado.desviada?false:true} />
-                    {/*si no existe valor de id es que no hay trabajos para cancelar, entonces deshabilito el BotonCancelar.*/}
-                    <BotonCancelar printer={estado.impresora} id={ultTrabajo.idUltimoTrabajo} isDisabled={ultTrabajo.idUltimoTrabajo === null || ultTrabajo.idUltimoTrabajo === undefined?true:false} />
+                    <BotonDesviaIpOriginal printer={estado.impresora} isDisabled={estado.desviada ? false : true} />
+                    {/*Le paso la función del fetch y si el estado para el  debe estar habilitado o no*/}
+                    <BotonCancelar
+                        isDisabled={isBotonCancelarDisabled}
+                        onClick={handleBotonCancelarClick}
+                    />
+                    <BotonPagPrueba printer={estado.impresora}/>
                     <Button onClick={handleClose}>Cerrar</Button>
                 </DialogActions>
             </Dialog>

@@ -1,19 +1,16 @@
 import { Button } from '@mui/material';
-import { useState } from 'react';
 import PropTypes from 'prop-types';
-import PauseIcon from '@mui/icons-material/Pause';
+import QuizIcon from '@mui/icons-material/Quiz';
 
-export const BotonPausa = ({printer}) => {
-
-    const [buttonText, setButtonText] = useState('Pausar');
+export const BotonPagPrueba = ({printer}) => {
 
     const handleClick = async (printer) => {
 
         // La función para manejar el punchar el botón ¿fetch?
-        console.log(`Boton pulsado por la impresora ${printer}`);
+        console.log(`Pagina de prueba por la impresora ${printer}`);
         
         try {
-            const res = await fetch(`http://172.30.5.181:4444/impresoras/${printer}/pausa/`, {
+            const res = await fetch(`http://172.30.5.181:4444/impresoras/${printer}/pagPrueba/`, {
                 method: 'GET'
             })
             const data = await res.json();
@@ -21,22 +18,20 @@ export const BotonPausa = ({printer}) => {
             
         } catch (error)      {
             console.log(error);
-        }        
-        setButtonText('Pausar');        
+        }            
     }
   
     return (
-        <Button 
-            variant="contained"
-            startIcon={<PauseIcon />}
+        <Button
+            startIcon={<QuizIcon />}
             onClick={() =>
                 handleClick(printer)
             }>
-            {buttonText}
+            Imprimir pagina de prueba
         </Button>
     )
 }
 
-BotonPausa.propTypes = {
+BotonPagPrueba.propTypes = {
     printer: PropTypes.string
 }

@@ -4,7 +4,7 @@ const regexError = /error/gi;
 // const regFechaPrimerTrabajo = /^(hora|time).*?$/gim;
 const regFechaPrimerTrabajo = /(\d{2}\/\d{2}\/\d{4} \d{2}:\d{2}:\d{2})/;
 let fechaPrimerTrabajo = "";
-const regId =  /(trabajo|id).(\d+)/i;
+const regId = /(trabajo|id).(\d+)/i;
 let idPrimerTrabajo = 1;
 
 
@@ -33,11 +33,11 @@ const trabajos = (printer) => {
 
             //Si hay algún trabajo hará match con algo distinto a null
             if (fechaPrimerTrabajo === null) {
-                fechaPrimerTrabajo = [null,null]
+                fechaPrimerTrabajo = [null, null]
             }
 
             if (idPrimerTrabajo === null) {
-                idPrimerTrabajo = [null,null]
+                idPrimerTrabajo = [null, null]
             }
 
 

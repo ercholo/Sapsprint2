@@ -38,6 +38,7 @@ export const BotonEstado = ({printer}) => {
                 method: 'GET'
             });
             const ultTrabajo = await res.json();
+            console.log(ultTrabajo)
             setultTrabajo(ultTrabajo)
         } catch (error) {
             console.log(error);
@@ -64,7 +65,7 @@ export const BotonEstado = ({printer}) => {
         <>
         {isLoading && (
         <div className={styles.overlay}>
-          <CircularProgress size={60} color="secondary" />
+          <CircularProgress style={{'color': 'yellow'}} size={160} />
         </div>
       )}
             <Button

@@ -1,40 +1,26 @@
 import { Button } from '@mui/material';
 import PropTypes from 'prop-types';
 import CancelIcon from '@mui/icons-material/Cancel';
+import { useEffect, useState } from 'react';
 
-export const BotonCancelar = ({ printer, id, isDisabled }) => {
+export const BotonCancelar = ({ isDisabled, onClick }) => {
 
-    const handleClick = async(printer, id) => {
+    console.log(`isDisabled ${isDisabled}`)
 
-        console.log(`Trabajo cancelado por la impresora ${printer}`);
-        
+    const [disabled, setDisabled] = useState(isDisabled);
 
-        try {
-            const res = await fetch(`http://172.30.5.181:4444/impresoras/${printer}/${id}/cancelarTrabajo`, {
-                method: 'GET'
-            });
-            const data = await res.json();
-            console.log(data);
-        } catch (error) {
-            console.log(error);
-        }
+    console.log(`disabled ${disabled}`)
 
-    }
-
-    //Lo ejecuta una vez para todas las impresoras
-    // useEffect(() => {
-    //     handleClick();
-    // }, [handleClick]);
-
+    useEffect(() => {
+        setDisabled(isDisabled);
+    }, [isDisabled]);
 
     return (
         <>
             <Button
-                
                 startIcon={<CancelIcon />}
-                disabled = {isDisabled}
-                onClick={() =>
-                    handleClick(printer, id)}>
+                disabled={disabled}
+                onClick={onClick}>
                 Cancelar primer trabajo en cola
             </Button>
         </>
@@ -44,5 +30,6 @@ export const BotonCancelar = ({ printer, id, isDisabled }) => {
 BotonCancelar.propTypes = {
     printer: PropTypes.string,
     id: PropTypes.string,
-    isDisabled: PropTypes.bool
+    isDisabled: PropTypes.bool,
+    onClick: PropTypes.func
 }
