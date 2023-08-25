@@ -35,8 +35,8 @@ let arr =
     ]
 
 
-const error = 
-`Nombre de servidor SAPSPRINT2
+const error =
+    `Nombre de servidor SAPSPRINT2
 Nombre de impresora 18aletq02
 Nombre del recurso compartido
 Nombre de controlador Generic / Text Only
@@ -79,7 +79,7 @@ Detected error state Other
 Extended detected error state Other`;
 
 const inactiva =
-`Nombre de servidor SAPSPRINT2
+    `Nombre de servidor SAPSPRINT2
 Nombre de impresora 18aletq01
 Nombre del recurso compartido
 Nombre de controlador Generic / Text Only
@@ -121,8 +121,8 @@ Extended printer status Unknown
 Detected error state Unknown
 Extended detected error state Unknown`;
 
-const pausa = 
-`Nombre de servidor SAPSPRINT2
+const pausa =
+    `Nombre de servidor SAPSPRINT2
 Nombre de impresora 01sipro01
 Nombre del recurso compartido 01SIPRO01
 Nombre de controlador Ricoh Aficio MP 161 PCL6
@@ -166,7 +166,7 @@ Extended detected error state Other`
 
 
 const imprimiendo =
-`Nombre de servidor SAPSPRINT2
+    `Nombre de servidor SAPSPRINT2
 Nombre de impresora 01sipro01
 Nombre del recurso compartido 01SIPRO01
 Nombre de controlador Ricoh Aficio MP 161 PCL6
@@ -209,8 +209,8 @@ Detected error state Other
 Extended detected error state Unknown`
 
 
-const sinConexion = 
-`Microsoft (R) Windows Script Host versión 5.812
+const sinConexion =
+    `Microsoft (R) Windows Script Host versión 5.812
 Copyright (C) Microsoft Corporation. Reservados todos los derechos.
 
 Nombre de servidor SAPSPRINT2
@@ -234,9 +234,9 @@ Estado de impresora extendido Sin conexión
 Estado de error detectado Sin conexión
 Estado de error detectado extendido Otros`
 
-const sinPapel = 
+const sinPapel =
 
-`Nombre de servidor SAPSPRINT2
+    `Nombre de servidor SAPSPRINT2
 Nombre de impresora 17aldev01
 Nombre del recurso compartido 17ALDEV01
 Nombre de controlador Ricoh Aficio MP 161 PCL6
@@ -279,9 +279,9 @@ Detected error state No paper
 Extended detected error state No paper`
 
 
-const bajoToner = 
+const bajoToner =
 
-`Nombre de servidor SAPSPRINT2
+    `Nombre de servidor SAPSPRINT2
 Nombre de impresora 01apcom01
 Nombre del recurso compartido 01APCOM01
 Nombre de controlador Ricoh Aficio MP 161 PCL6
@@ -324,8 +324,8 @@ Detected error state Low toner
 Extended detected error state Low toner`
 
 
-const primerTrabajo = 
-`Microsoft (R) Windows Script Host versión 5.812
+const primerTrabajo =
+    `Microsoft (R) Windows Script Host versión 5.812
 Copyright (C) Microsoft Corporation. Reservados todos los derechos.
 
 
@@ -548,8 +548,8 @@ Número de trabajos de impresión enumerados 9`
 // let impresoraDesvio = "";
 
 
-const puestaPorSuSitio = 
-`Microsoft (R) Windows Script Host versión 5.812
+const puestaPorSuSitio =
+    `Microsoft (R) Windows Script Host versión 5.812
 Copyright (C) Microsoft Corporation. Reservados todos los derechos.
 
 Impresora configurada 18aletq03`
@@ -558,129 +558,194 @@ Impresora configurada 18aletq03`
 
 // const regId =  /Id\. de trabajo (\d+)(?=\n\n|[\s\S]*$)/;
 
-const regId =  /(trabajo|id).(\d+)/i;
+// const regId =  /(trabajo|id).(\d+)/i;
 
-const prueba = primerTrabajo.match(regId)
-console.log(prueba[2])
+// const prueba = primerTrabajo.match(regId)
+// console.log(prueba[2])
 
 
 const regFechaPrimerTrabajo = /^(hora|time).*?$/im;
 // console.log(prueba)
 
-const impresorasIP = [
-    {
-        impresora: "16ALAV101",
-        ip: "172.30.141.243"
-    },
-    {
-        impresora: "16ALAV201",
-        ip: "172.30.141.245"
-    },
-    {
-        impresora: "16ALAV102",
-        ip: "172.30.141.244"
-    },
-    {
-        impresora: "16ALAV202",
-        ip: "172.30.141.246"
-    },
-    {
-        impresora: "16ALDEV01",
-        ip: "172.30.141.247"
-    },
-    {
-        impresora: "16ALETQ01",
-        ip: "172.30.141.80"
-    },
-    {
-        impresora: "16ALETQ02",
-        ip: "172.30.141.81"
-    },
-    {
-        impresora: "16ALETQ03",
-        ip: "172.30.141.82"
-    },
-    {
-        impresora: "16ALEXP01",
-        ip: "172.30.141.248"
-    },
-    {
-        impresora: "16ALJEF01",
-        ip: "172.30.141.249"
-    },
-    {
-        impresora: "17ADCOM01",
-        ip: "172.30.95.243"
-    },
-    {
-        impresora: "17ALAV101",
-        ip: "172.30.95.247"
-    },
-    {
-        impresora: "17ALAV102",
-        ip: "172.30.95.242"
-    },
-    {
-        impresora: "17ALDEV01",
-        ip: "172.30.95.245"
-    },
-    {
-        impresora: "17ALGVO01",
-        ip: "172.30.95.242"
-    },
-    {
-        impresora: "17ALJEF01",
-        ip: "172.30.95.245"
-    },
-    {
-        impresora: "17ATTOM01",
-        ip: "172.30.141.246"
-    },
-    {
-        impresora: "18ALAV101",
-        ip: "172.30.120.246"
-    },
-    {
-        impresora: "18ALAV102",
-        ip: "172.30.120.243"
-    },
-    {
-        impresora: "18ALAV201",
-        ip: "172.30.120.246"
-    },
-    {
-        impresora: "18ALAV202",
-        ip: "172.30.120.243"
-    },
-    {
-        impresora: "18ALDEV01",
-        ip: "172.30.120.247"
-    },
-    {
-        impresora: "18ALETQ01",
-        ip: "172.30.120.80"
-    },
-    {
-        impresora: "18ALETQ02",
-        ip: "172.30.120.81"
-    },
-    {
-        impresora: "18ALETQ03",
-        ip: "172.30.120.82"
-    },
-    {
-        impresora: "18ALEXP01",
-        ip: "172.30.120.245"
-    },
-    {
-        impresora: "18ALJEF01",
-        ip: "172.30.120.248"
+    const impresorasIP = [
+        {
+            impresora: "16ALAV101",
+            ip: "172.30.141.243"
+        },
+        {
+            impresora: "16ALAV201",
+            ip: "172.30.141.245"
+        },
+        {
+            impresora: "16ALAV102",
+            ip: "172.30.141.244"
+        },
+        {
+            impresora: "16ALAV202",
+            ip: "172.30.141.246"
+        },
+        {
+            impresora: "16ALDEV01",
+            ip: "172.30.141.247"
+        },
+        {
+            impresora: "16ALEXP01",
+            ip: "172.30.141.248"
+        },
+        {
+            impresora: "16ALJEF01",
+            ip: "172.30.141.249"
+        },
+        {
+            impresora: "17ADCOM01",
+            ip: "172.30.95.243"
+        },
+        {
+            impresora: "17ALAV101",
+            ip: "172.30.95.247"
+        },
+        {
+            impresora: "17ALAV102",
+            ip: "172.30.95.242"
+        },
+        {
+            impresora: "17ALDEV01",
+            ip: "172.30.95.245"
+        },
+        {
+            impresora: "17ALGVO01",
+            ip: "172.30.95.242"
+        },
+        {
+            impresora: "17ALJEF01",
+            ip: "172.30.95.245"
+        },
+        {
+            impresora: "17ATTOM01",
+            ip: "172.30.141.246"
+        },
+        {
+            impresora: "18ALAV101",
+            ip: "172.30.120.246"
+        },
+        {
+            impresora: "18ALAV102",
+            ip: "172.30.120.243"
+        },
+        {
+            impresora: "18ALAV201",
+            ip: "172.30.120.246"
+        },
+        {
+            impresora: "18ALAV202",
+            ip: "172.30.120.243"
+        },
+        {
+            impresora: "18ALDEV01",
+            ip: "172.30.120.247"
+        },
+        {
+            impresora: "18ALEXP01",
+            ip: "172.30.120.245"
+        },
+        {
+            impresora: "18ALJEF01",
+            ip: "172.30.120.248"
+        }
+    ]
+
+
+    const impresorasEtq = [
+        {
+            impresora: "16ALETQ01",
+            ip: "172.30.141.80"
+        },
+        {
+            impresora: "16ALETQ02",
+            ip: "172.30.141.81"
+        },
+        {
+            impresora: "16ALETQ03",
+            ip: "172.30.141.82"
+        },
+        {
+            impresora: "17ALETQ00",
+            ip: "172.30.95.80"
+        },
+        {
+            impresora: "17ALETQ01",
+            ip: "172.30.95.81"
+        },
+        {
+            impresora: "17ALETQ02",
+            ip: "172.30.95.82"
+        },
+        {
+            impresora: "18ALETQ01",
+            ip: "172.30.120.80"
+        },
+        {
+            impresora: "18ALETQ02",
+            ip: "172.30.120.81"
+        },
+        {
+            impresora: "18ALETQ03",
+            ip: "172.30.120.82"
+        }
+    ]
+
+
+const regImpEtq = /^[0-9]{2}ALETQ[0-9]{2}$/
+const printer = '18ALJEF01';
+const printerEtq = '18ALETQ02';
+const almImp = printer.substring(0, 2);
+
+console.log(almImp)
+
+
+//Funcion para filtrar las impresoras compatibles para el desvío (si es de etiquetas o de papel y si es de un almacén en cocreto)
+const comprueba = () => {
+
+    // Para saber si la impresora es de etiquetas
+    if (printerEtq.match(regImpEtq)) {
+
+        const resultado = impresorasEtq.filter(impresora =>
+            impresora.impresora.startsWith(almImp)
+        );
+
+        resultado.map(impresora => console.log(impresora.impresora))
+    } else {
+
     }
-]
+}
+
+comprueba();
+
+// const comprueba = () => {
+
+//     impresorasEtq.map((impresora) => {
+//         if (impresora.impresora.match(regImpEtq)) {
+//             console.log(`match! ${impresora.impresora}`)
+//         }
+//     });
+// }
+//  comprueba();
 
 
-const ipString1 = 
-`Microsoft (R) Windows Script Host versión 5.812
+// const regAlmacen = /18ALETQ02/
+// const regAlmacen = /^[0-9]{2}\w/
+
+// let result1 = impresorasIP.map(impresora => {
+//     // 
+//     console.log(impresora.impresora.match(regAlmacen))
+// })
+
+
+
+// console.log(result1);
+
+const ipString1 =
+    `Microsoft (R) Windows Script Host versión 5.812
 Copyright (C) Microsoft Corporation. Reservados todos los derechos.
 
 Nombre de servidor SAPSPRINT2
@@ -704,37 +769,6 @@ Estado de impresora extendido Desconocido
 Estado de error detectado Desconocido
 Estado de error detectado extendido Desconocido`
 
-// for ( let impresora of impresorasIP) {
-
-//     if ( impresora.impresora === "18ALAV201" && ip === impresora.ip) {
-
-//         desviada = false;
-
-//     } else if ( impresora.impresora === "18ALAV201" && ip != impresora.ip) {
-
-//         console.log(impresora.impresora)
-//         desviada = true;
-//         impresoraDesvio = impresorasIP.find(impresora => impresora.ip === ip)
-//         console.log(impresoraDesvio)
-
-//     }
-
-// }
-
-// for ( const impresora of impresorasIP) {
-
-//     if ( impresora.impresora === printer && ip === impresora.ip) {
-
-//         desviada = false;
-
-//     } else if ( impresora.impresora === printer && ip != impresora.ip) {
-
-//         desviada = true;
-//         impresoraDesvio = impresorasIP.find(impresora => impresora.ip === ip)
-
-//     }
-
-// }
 
 
 

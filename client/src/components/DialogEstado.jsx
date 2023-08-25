@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { BotonDesviaIpOriginal } from './botonDesviaIpOriginal';
 import { BotonCancelar } from './botonCancelarTrabajo';
 import { BotonPagPrueba } from './botonPagPrueba'
@@ -16,7 +16,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export const AlertDialogSlide = ({ openDialog, setOpenDialog, estado, ultTrabajo }) => {
+export const AlertDialogEstado = ({ openDialog, setOpenDialog, estado, ultTrabajo }) => {
 
     const [isBotonCancelarDisabled, setIsBotonCancelarDisabled] = useState(ultTrabajo.idUltimoTrabajo === null);
 
@@ -28,7 +28,8 @@ export const AlertDialogSlide = ({ openDialog, setOpenDialog, estado, ultTrabajo
         setIsBotonCancelarDisabled(ultTrabajo.idUltimoTrabajo === null);
     }, [ultTrabajo.idUltimoTrabajo]);
 
-    const handleBotonCancelarClick = async () => {
+    const handleBotonCancelarClick = useCallback(async () => {
+        
         console.log(`Trabajo cancelado por la impresora ${estado.impresora}`);
 
         try {
@@ -42,7 +43,7 @@ export const AlertDialogSlide = ({ openDialog, setOpenDialog, estado, ultTrabajo
         } finally {
             setIsBotonCancelarDisabled(true);
         }
-    }
+    },[estado.impresora, ultTrabajo.idUltimoTrabajo])
 
     return (
         <div>
@@ -89,7 +90,7 @@ export const AlertDialogSlide = ({ openDialog, setOpenDialog, estado, ultTrabajo
     );
 }
 
-AlertDialogSlide.propTypes = {
+AlertDialogEstado.propTypes = {
     openDialog: PropTypes.bool,
     setOpenDialog: PropTypes.func,
     estado: PropTypes.object,

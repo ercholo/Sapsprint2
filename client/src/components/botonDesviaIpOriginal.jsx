@@ -1,8 +1,15 @@
 import { Button } from '@mui/material';
 import PropTypes from 'prop-types';
 import MergeIcon from '@mui/icons-material/Merge';
+import { useState, useEffect } from 'react';
 
 export const BotonDesviaIpOriginal = ({ printer, isDisabled }) => {
+
+    const [disabled, setDisabled ] = useState(isDisabled)
+
+    useEffect(() => {
+        setDisabled(isDisabled);
+    }, [isDisabled]);
 
     const handleClick = async(printer) => {
 
@@ -18,6 +25,8 @@ export const BotonDesviaIpOriginal = ({ printer, isDisabled }) => {
             console.log(desviadaOriginal);
         } catch (error) {
             console.log(error);
+        } finally {
+            setDisabled(true)
         }
     }
 
@@ -30,7 +39,7 @@ export const BotonDesviaIpOriginal = ({ printer, isDisabled }) => {
         <>
             <Button               
                 startIcon={<MergeIcon />}
-                disabled = {isDisabled}
+                disabled = {disabled}
                 onClick={() =>
                     handleClick(printer)}>
                 Desviar a su sitio original

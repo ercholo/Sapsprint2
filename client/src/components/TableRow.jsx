@@ -10,7 +10,7 @@ import styles from '../styles/celdas.module.css';
 
 export const TableRows = React.memo(({row, data}) => {
 
-    //Esta función cambia el color dependiendo de si hay error en el 'data' (props)
+    //Esta función cambia el color dependiendo de si hay error en el 'data' (printer.value.error)
     const getBackgroundColor = filaEvaluadaError => {
 
         return data.find(printer => {

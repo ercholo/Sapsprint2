@@ -1,7 +1,7 @@
 import { Button } from '@mui/material';
 import PropTypes from 'prop-types';
 import { useState, useCallback } from 'react';
-import { AlertDialogSlide } from './dialogEstado';
+import { AlertDialogEstado } from './dialogEstado';
 import styles from '../styles/loader.module.css';
 import CircularProgress from '@mui/material/CircularProgress';
 import GradeIcon from '@mui/icons-material/Grade';
@@ -75,7 +75,7 @@ export const BotonEstado = ({printer}) => {
                 onClick={handleOpenDialog}>
                 {isLoading ? 'Cargando...' : 'Estado'}
             </Button>
-            <AlertDialogSlide openDialog={openDialog} setOpenDialog={setOpenDialog} estado={estado} ultTrabajo={ultTrabajo} />
+            <AlertDialogEstado openDialog={openDialog} setOpenDialog={setOpenDialog} estado={estado} ultTrabajo={ultTrabajo} />
         </>
     )
 }

@@ -5,11 +5,11 @@ import { useEffect, useState } from 'react';
 
 export const BotonCancelar = ({ isDisabled, onClick }) => {
 
-    console.log(`isDisabled ${isDisabled}`)
+    // console.log(`isDisabled ${isDisabled}`)
 
     const [disabled, setDisabled] = useState(isDisabled);
 
-    console.log(`disabled ${disabled}`)
+    // console.log(`disabled ${disabled}`)
 
     useEffect(() => {
         setDisabled(isDisabled);
