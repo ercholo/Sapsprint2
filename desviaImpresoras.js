@@ -120,54 +120,68 @@ const impresorasIP = [
     {
         impresora: "18ALJEF01",
         ip: "172.30.120.248"
+    },
+    {
+        impresora: "18ATTOM01",
+        ip: "172.30.120.249"
+    },
+    {
+        impresora: "18ATTOM02",
+        ip: "172.30.120.244"
     }
 ]
 
-const desviarImpresora = (printer) => {
+const regIsDesviada = /(Impresora configurada|Configured printer)/gi;
+let isDesviada = Boolean;
+let ip = String
+
+const desviarImpresora = (impresoraDesviada, impresoraDestino) => {
+
+    console.log(impresoraDesviada);
+    console.log(impresoraDestino);
+    
+    for (let impresora of impresorasIP) {
+
+        if (impresora.impresora === impresoraDestino) {
+
+            ip = impresora.ip
+            console.log(ip)
+
+        } 
+    }
 
     return new Promise((resolve, reject) => {
 
-        exec(`cscript prncnfg.vbs -t -s sapsprint2 -p ${printer} -r ${ip}`, { cwd: 'C:\\Windows\\System32\\Printing_Admin_Scripts\\es-ES'}, (error, stdout, stderr) => {
+        exec(`cscript prncnfg.vbs -t -s sapsprint2 -p ${impresoraDesviada} -r ${ip}`, { cwd: 'C:\\Windows\\System32\\Printing_Admin_Scripts\\es-ES' }, (error, stdout, stderr) => {
 
             // console.log(stdout)
 
-            for (let impresora of impresorasIP) {
+                //Si hay errores, que los muestre
+                if (error) {
+                    console.log(stdout);
+                    console.log(stderr);
+                    reject();
+                };
 
-                if (impresora.impresora === printer && ip[0] === impresora.ip) {
-
-                    desviada = false;
-
-                } else if (impresora.impresora === printer && ip[0] != impresora.ip) {
-
-                    console.log(ip[0])
-                    desviada = true;
-                    impresoraDesvio = impresorasIP.find(impresora => impresora.ip === ip[0])
-                    console.log(impresoraDesvio)
+                //Busco el estado de la impresora en el stdout y lo devuelvo
+                if (stdout.match(regIsDesviada)) {
+                    isDesviada = true
+                } else {
+                    isDesviada = false;
                 }
-            }
 
-            //Si hay errores, que los muestre
-            if (error) {
-                console.log(stdout);
-                console.log(stderr);
-                reject();
-            };
+                    resolve(
+                        {
+                            isDesviada: isDesviada
+                        }
+                    );
+                
+                //Si hay más de 500 lo dejo pasar, hay muchas impresoras averiadas con millones de trabajos
+                // if (parseInt(result[0]) > 500) { 
+                //     resolve("+500");
+                // }; 
 
-            //Busco el estado de la impresora en el stdout y lo devuelvo
-            if (stdout.match(regInactiva)) {
-
-                resolve(
-                    {
-
-                    }
-                );
-            }
-            //Si hay más de 500 lo dejo pasar, hay muchas impresoras averiadas con millones de trabajos
-            // if (parseInt(result[0]) > 500) { 
-            //     resolve("+500");
-            // }; 
-
-        });
+            });
     });
 };
 

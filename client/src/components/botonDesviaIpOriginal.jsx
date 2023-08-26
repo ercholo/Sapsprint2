@@ -16,7 +16,7 @@ export const BotonDesviaIpOriginal = ({ printer, isDisabled }) => {
         console.log(`Impresora devuelta a su sitio original ${printer}`);    
 
         try {
-            const res = await fetch(`http://172.30.5.181:4444/impresoras/${printer}/desviaIpOriginal`, {
+            const res = await fetch(`http://172.30.5.181:4444/impresoras/${printer}/desviarImpresoraOriginal`, {
                 method: 'GET'
             });
             const { desviadaOriginal } = await res.json();
@@ -26,7 +26,7 @@ export const BotonDesviaIpOriginal = ({ printer, isDisabled }) => {
         } catch (error) {
             console.log(error);
         } finally {
-            setDisabled(true)
+            setDisabled(true);
         }
     }
 

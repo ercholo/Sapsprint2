@@ -120,6 +120,14 @@ const impresorasIP = [
     {
         impresora: "18ALJEF01",
         ip: "172.30.120.248"
+    },
+    {
+        impresora: "18ATTOM01",
+        ip: "172.30.120.249"
+    },
+    {
+        impresora: "18ATTOM02",
+        ip: "172.30.120.244"
     }
 ]
 
@@ -127,7 +135,7 @@ const regEnSuSitioOriginal = /(Impresora configurada|Configured printer)/gi;
 let desviadaOriginal = Boolean;
 let ip = String
 
-const desviarImpresora = (printer) => {
+const desviarImpresoraOriginal = (printer) => {
 
     for (let impresora of impresorasIP) {
         if (impresora.impresora === printer) {
@@ -167,4 +175,4 @@ const desviarImpresora = (printer) => {
     });
 };
 
-module.exports = desviarImpresora;
+module.exports = desviarImpresoraOriginal;

@@ -93,6 +93,14 @@ const impresorasPapel = [
     {
         impresora: "18ALJEF01",
         ip: "172.30.120.248"
+    },
+    {
+        impresora: "18ATTOM01",
+        ip: "172.30.120.249"
+    },
+    {
+        impresora: "18ATTOM02",
+        ip: "172.30.120.244"
     }
 ]
 
@@ -146,9 +154,24 @@ export const AlertDialogDesviar = ({ setOpenDialog, openDialog, estado }) => {
 
     const almImp = estado?.impresora?.substring(0, 2) || '';
 
-    const handleclick = () => {
+    const handleclick = async(impresoraDestino) => {
 
+        console.log(`Desviar la impresora ${estado.impresora} por ${impresoraDestino}`);
+
+        try {
+            const res = await fetch(`http://172.30.5.181:4444/impresoras/${estado.impresora}/${impresoraDestino}/desviar`, {
+                method: 'GET'
+            });
+            const { isDesviada } = await res.json();
+            // desviadaOriginal?isDisabled
+
+            console.log(isDesviada);
+        } catch (error) {
+            console.log(error);
+        } 
     }
+
+
 
     const handleClose = () => {
         setOpenDialog(false);
@@ -192,7 +215,7 @@ export const AlertDialogDesviar = ({ setOpenDialog, openDialog, estado }) => {
                                                     estado.impresora !== impresora.impresora && (
                                                         <Button
                                                             key={impresora.impresora}
-                                                            onClick={() => handleclick()}
+                                                            onClick={() => handleclick(impresora.impresora)}
                                                             className="boton-desviar"
                                                             id={impresora.impresora}
                                                         >

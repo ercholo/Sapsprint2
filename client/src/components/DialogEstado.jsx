@@ -16,7 +16,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export const AlertDialogEstado = ({ openDialog, setOpenDialog, estado, ultTrabajo }) => {
+export const AlertDialogSlide = ({ openDialog, setOpenDialog, estado, ultTrabajo }) => {
 
     const [isBotonCancelarDisabled, setIsBotonCancelarDisabled] = useState(ultTrabajo.idUltimoTrabajo === null);
 
@@ -90,7 +90,7 @@ export const AlertDialogEstado = ({ openDialog, setOpenDialog, estado, ultTrabaj
     );
 }
 
-AlertDialogEstado.propTypes = {
+AlertDialogSlide.propTypes = {
     openDialog: PropTypes.bool,
     setOpenDialog: PropTypes.func,
     estado: PropTypes.object,

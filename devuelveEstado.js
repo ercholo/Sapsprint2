@@ -130,6 +130,14 @@ const impresorasIP = [
     {
         impresora: "18ALJEF01",
         ip: "172.30.120.248"
+    },
+    {
+        impresora: "18ATTOM01",
+        ip: "172.30.120.249"
+    },
+    {
+        impresora: "18ATTOM02",
+        ip: "172.30.120.244"
     }
 ]
 
@@ -174,8 +182,8 @@ const estados = (printer) => {
                         impresora: printer,
                         estado: "INACTIVA",
                         desviada: desviada,
-                        impresoraDesvio: impresoraDesvio.impresora
-
+                        impresoraDesvio: impresoraDesvio.impresora,
+                        ip : ip[0]
                     }
                 );
 
@@ -186,7 +194,8 @@ const estados = (printer) => {
                         impresora: printer,
                         estado: "IMPRIMIENDO",
                         desviada: desviada,
-                        impresoraDesvio: impresoraDesvio.impresora
+                        impresoraDesvio: impresoraDesvio.impresora,
+                        ip : ip[0]
                     }
                 );
 
@@ -197,7 +206,8 @@ const estados = (printer) => {
                         impresora: printer,
                         estado: "PAUSADA",
                         desviada: desviada,
-                        impresoraDesvio: impresoraDesvio.impresora
+                        impresoraDesvio: impresoraDesvio.impresora,
+                        ip : ip[0]
                     }
                 );
 
@@ -208,7 +218,8 @@ const estados = (printer) => {
                         impresora: printer,
                         estado: "SIN PAPEL",
                         desviada: desviada,
-                        impresoraDesvio: impresoraDesvio.impresora
+                        impresoraDesvio: impresoraDesvio.impresora,
+                        ip : ip[0]
                     }
                 );
 
@@ -219,7 +230,8 @@ const estados = (printer) => {
                         impresora: printer,
                         estado: "SIN CONEXION",
                         desviada: desviada,
-                        impresoraDesvio: impresoraDesvio.impresora
+                        impresoraDesvio: impresoraDesvio.impresora,
+                        ip : ip[0]
                     }
                 );
 
@@ -230,7 +242,8 @@ const estados = (printer) => {
                         impresora: printer,
                         estado: "TÓNER BAJO",
                         desviada: desviada,
-                        impresoraDesvio: impresoraDesvio.impresora
+                        impresoraDesvio: impresoraDesvio.impresora,
+                        ip : ip[0]
                     }
                 );
 
@@ -241,7 +254,8 @@ const estados = (printer) => {
                         impresora: printer,
                         estado: "ERROR",
                         desviada: desviada,
-                        impresoraDesvio: impresoraDesvio.impresora
+                        impresoraDesvio: impresoraDesvio.impresora,
+                        ip : ip[0]
                     }
                 );
             } else {
@@ -250,7 +264,8 @@ const estados = (printer) => {
                         impresora: printer,
                         estado: "PROBABLEMENTE ERROR",
                         desviada: desviada,
-                        impresoraDesvio: impresoraDesvio.impresora
+                        impresoraDesvio: impresoraDesvio.impresora,
+                        ip : ip[0]
                     }
                 );
             }

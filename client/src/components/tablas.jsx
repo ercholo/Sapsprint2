@@ -103,7 +103,9 @@ const rows = [
     createData('18ALETQ02', 0, 'RG18', 'etiquetas', '172.30.120.81'),
     createData('18ALETQ03', 0, 'RG18', 'etiquetas', '172.30.120.82'),
     createData('18ALEXP01', 0, 'RG18', 'papel', '172.30.120.245'),
-    createData('18ALJEF01', 0, 'RG18', 'papel', '172.30.120.248')
+    createData('18ALJEF01', 0, 'RG18', 'papel', '172.30.120.248'),
+    createData('18ATTOM01', 0, 'RG18', 'papel', '172.30.120.249'),
+    createData('18ATTOM02', 0, 'RG18', 'papel', '172.30.120.244')
 ]
 
 
