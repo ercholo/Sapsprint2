@@ -1,11 +1,15 @@
-import * as React from 'react';
+import { useState, forwardRef } from 'react';
 import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
+import MuiAlert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
+import Snackbar from '@mui/material/Snackbar';
 import PropTypes from 'prop-types';
 import { blue } from '@mui/material/colors';
 
@@ -146,15 +150,25 @@ const impresorasEtq = [
 
 const regImpEtq = /^[0-9]{2}ALETQ[0-9]{2}$/
 
-const Transition = React.forwardRef(function Transition(props, ref) {
+
+//Esta función hace desplazarse el dialog
+const Transition = forwardRef(function Transition(props, ref) {
     return <Slide direction="down" ref={ref} {...props} />;
+});
+
+const Alert = forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
 export const AlertDialogDesviar = ({ setOpenDialog, openDialog, estado }) => {
 
+    //Si existe la prop(cuando llega) coge los dos primeros caracteres para saber de que almacen es la imperesora que se quiere desviar.
     const almImp = estado?.impresora?.substring(0, 2) || '';
 
-    const handleclick = async(impresoraDestino) => {
+    const [showAlertSuccess, setShowAlertSuccess] = useState(false);
+    const [showAlertError, setShowAlertError] = useState(false);
+
+    const handleclick = async (impresoraDestino) => {
 
         console.log(`Desviar la impresora ${estado.impresora} por ${impresoraDestino}`);
 
@@ -163,20 +177,17 @@ export const AlertDialogDesviar = ({ setOpenDialog, openDialog, estado }) => {
                 method: 'GET'
             });
             const { isDesviada } = await res.json();
-            // desviadaOriginal?isDisabled
+            isDesviada ? setShowAlertSuccess(true) : setShowAlertError(true);
 
             console.log(isDesviada);
         } catch (error) {
             console.log(error);
-        } 
+        }
     }
-
-
 
     const handleClose = () => {
         setOpenDialog(false);
     };
-
 
 
     return (
@@ -200,7 +211,7 @@ export const AlertDialogDesviar = ({ setOpenDialog, openDialog, estado }) => {
                                     <span style={{ color: blue[500] }}>DESVÍO:</span> {'LA IMPRESORA ESTÁ DESVIADA, PRIMERO HAY QUE DEVOLVERLA A SU SITIO ORIGINAL'}
                                 </div>
                                 :
-                                <div id="contenedor-boton">
+                                <Stack spacing={{ xs: 1, sm: 2 }} direction="row" useFlexGap flexWrap="wrap">
 
                                     {
                                         // Para saber si la impresora es de etiquetas
@@ -214,6 +225,7 @@ export const AlertDialogDesviar = ({ setOpenDialog, openDialog, estado }) => {
                                                     // Excluir el botón con el mismo nombre que estado.impresora
                                                     estado.impresora !== impresora.impresora && (
                                                         <Button
+                                                            variant="outlined"
                                                             key={impresora.impresora}
                                                             onClick={() => handleclick(impresora.impresora)}
                                                             className="boton-desviar"
@@ -233,6 +245,7 @@ export const AlertDialogDesviar = ({ setOpenDialog, openDialog, estado }) => {
                                                     // Excluir el botón con el mismo nombre que estado.impresora
                                                     estado.impresora !== impresora.impresora && (
                                                         <Button
+                                                            variant="outlined"
                                                             key={impresora.impresora}
                                                             onClick={() => handleclick()}
                                                             className="boton-desviar"
@@ -243,7 +256,21 @@ export const AlertDialogDesviar = ({ setOpenDialog, openDialog, estado }) => {
                                                     )
                                                 ))
                                         )}
-                                </div>
+                                    {showAlertSuccess ?
+                                        <Snackbar open={showAlertSuccess} autoHideDuration={3000} onClose={handleClose}>
+                                            <Alert severity="success">
+                                                <AlertTitle>Desviada correctamente</AlertTitle>
+                                            </Alert>
+                                        </Snackbar>
+                                        :
+                                        <Snackbar open={showAlertError} autoHideDuration={3000} onClose={handleClose}>
+                                            <Alert severity="error">
+                                                <AlertTitle>Error</AlertTitle>
+                                                This is an error alert — <strong>check it out!</strong>
+                                            </Alert>
+                                        </Snackbar>
+                                    }
+                                </Stack>
                         }
                     </DialogContentText>
                 </DialogContent>
@@ -251,7 +278,7 @@ export const AlertDialogDesviar = ({ setOpenDialog, openDialog, estado }) => {
                     <Button onClick={handleClose}>Cerrar</Button>
                 </DialogActions>
             </Dialog>
-        </div>
+        </div >
     );
 }
 

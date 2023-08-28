@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, forwardRef } from 'react';
 import { BotonDesviaIpOriginal } from './botonDesviaIpOriginal';
 import { BotonCancelar } from './botonCancelarTrabajo';
 import { BotonPagPrueba } from './botonPagPrueba'
@@ -9,6 +9,9 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
+import MuiAlert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
+import Snackbar from '@mui/material/Snackbar';
 import PropTypes from 'prop-types';
 import { blue } from '@mui/material/colors';
 
@@ -16,9 +19,15 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
+const Alert = forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
 export const AlertDialogSlide = ({ openDialog, setOpenDialog, estado, ultTrabajo }) => {
 
     const [isBotonCancelarDisabled, setIsBotonCancelarDisabled] = useState(ultTrabajo.idUltimoTrabajo === null);
+    const [showAlertSuccess, setShowAlertSuccess] = useState(false);
+    const [showAlertError, setShowAlertError] = useState(false);
 
     const handleClose = () => {
         setOpenDialog(false);
@@ -37,6 +46,7 @@ export const AlertDialogSlide = ({ openDialog, setOpenDialog, estado, ultTrabajo
                 method: 'GET'
             });
             const data = await res.json();
+            data.cancelado ? setShowAlertSuccess(true) : setShowAlertError(true);
             console.log(data);
         } catch (error) {
             console.log(error);
@@ -66,6 +76,9 @@ export const AlertDialogSlide = ({ openDialog, setOpenDialog, estado, ultTrabajo
                             <span style={{ color: '#1563B0' }}>Desvío:</span> {estado.desviada ? 'DESVIADA' : 'Sin desvío'}
                         </div>
                         <div style={{ margin: '8px 0' }}>
+                            <span style={{ color: '#1563B0' }}>IP actual: </span> {estado.ip}
+                        </div>
+                        <div style={{ margin: '8px 0' }}>
                             <span style={{ color: '#1563B0' }}>Impresora desviada:</span> {estado.desviada ? estado.impresoraDesvio : 'Sin desvío'}
                         </div>
                         <div style={{ margin: '8px 0' }}>
@@ -84,6 +97,20 @@ export const AlertDialogSlide = ({ openDialog, setOpenDialog, estado, ultTrabajo
                     />
                     <BotonPagPrueba printer={estado.impresora}/>
                     <Button onClick={handleClose}>Cerrar</Button>
+                    {showAlertSuccess ?
+                                        <Snackbar open={showAlertSuccess} autoHideDuration={2000} onClose={handleClose}>
+                                            <Alert severity="success">
+                                                <AlertTitle>Cancelado correctamente</AlertTitle>
+                                            </Alert>
+                                        </Snackbar>
+                                        :
+                                        <Snackbar open={showAlertError} autoHideDuration={3000} onClose={handleClose}>
+                                            <Alert severity="error">
+                                                <AlertTitle>Error</AlertTitle>
+                                                <strong>No hay trabajos pendientes para cancelar. </strong>
+                                            </Alert>
+                                        </Snackbar>
+                                    }
                 </DialogActions>
             </Dialog>
         </div>
