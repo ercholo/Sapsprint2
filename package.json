@@ -1,7 +1,7 @@
 {
-  "name": "10-calendar-backend",
+  "name": "sapsprint2",
   "version": "1.0.0",
-  "description": "",
+  "description": "Gestión de impresoras de Sapsprint2",
   "main": "index.js",
   "scripts": {
     "dev": "npx nodemon index.js",
@@ -13,16 +13,20 @@
   "dependencies": {
     "@fontsource/roboto": "^5.0.8",
     "activedirectory": "^0.7.2",
+    "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "express-basic-auth": "^1.2.1",
     "express-validator": "^7.0.1",
     "iconv-lite": "^0.6.3",
+    "jsonwebtoken": "^9.0.1",
     "mogoose": "^0.0.1-security",
     "mongodb": "^5.7.0",
     "mongoose": "^7.3.4",
     "nodemon": "^3.0.1",
+    "react-use": "^17.4.0",
+    "web-vitals": "^3.4.0",
     "winston": "^3.10.0"
   }
 }

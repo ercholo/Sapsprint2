@@ -50,7 +50,7 @@ const trabajos = (printer) => {
             resolve(
                 {
                     impresora: printer,
-                    valor: result[0] =! null ? result[0] : "E",
+                    valor: result !== null ? (result[0] !== null ? result[0] : "E") : "E",
                     error: error,
                     fechaPrimerTrabajo: fechaPrimerTrabajo[0],
                     idUltimoTrabajo: idPrimerTrabajo[2]

@@ -2,15 +2,19 @@ const express = require('express');
 require('dotenv').config();
 const cors = require('cors')
 const corsOptions = require('./controllers/funciones')
+const { generarJWT, myAsyncAuthorizer } = require('./helpers/jwt')
+const basicAuth = require('express-basic-auth')
+AD = require('activedirectory');
 
 //Crear servidor Express
 const app = express();
 
-//Base de datos
-//dbConnection();
 // corsOptions;
 app.options('*', cors(corsOptions));
 app.use(cors(corsOptions));
+
+//Base de datos
+//dbConnection();
 
 //Directorio público.
 app.use(express.static('public'));
@@ -18,7 +22,16 @@ app.use(express.static('public'));
 // Lectura y parseo del body
 app.use(express.json());
 
-//TODO: auth // crear, login, renew
+// autenticación BasicAuth
+// app.use(basicAuth({
+//     authorizer: myAsyncAuthorizer,
+//     authorizeAsync: true
+// }));
+
+// Definir la ruta de autenticación
+app.use('/login', require('./routes/auth'));
+
+//TODO: devolver trabajos y demás trabajos
 app.use('/impresoras', require('./routes/impresoras'));
 
 //TODO: CRUD: Eventos

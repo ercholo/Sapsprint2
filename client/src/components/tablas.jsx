@@ -152,7 +152,7 @@ export const StickyHeadTable = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             getImpresoras();
-        }, 5000);
+        }, 6000);
         return () => clearInterval(interval);
     }, [getImpresoras]);
 
