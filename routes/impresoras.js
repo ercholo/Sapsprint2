@@ -1,8 +1,9 @@
 // host + /impresoras
+
 const { Router, request } = require('express');
 const router = Router();
 require('dotenv').config();
-const verifyToken = require('../middlewares/authenticate')
+const { verifyToken } = require('../middlewares/validarJwt')
 const { response } = require('express');
 const trabajos = require('../devuelveTrabajos');
 const pausar = require('../pausaImpresora');

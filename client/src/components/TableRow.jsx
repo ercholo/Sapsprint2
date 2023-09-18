@@ -1,11 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TableCell from '@mui/material/TableCell';
-import TableRow from '@mui/material/TableRow';
-import { BotonPausa } from './botonesPausa';
-import { BotonReanudar } from './botonReanudar';
-import { BotonEstado } from './botonEstado';
-import { BotonDesviar } from './botonDesviar';
+import {TableCell, TableRow } from '@mui/material';
+import { BotonPausa, BotonReanudar, BotonEstado, BotonDesviar  } from './index';
 import styles from '../styles/celdas.module.css';
 
 export const TableRows = React.memo(({row, data}) => {

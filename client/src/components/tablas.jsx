@@ -1,17 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TablePagination from '@mui/material/TablePagination';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import { TableRows } from './TableRow';
-import { SelectAlmacen } from './selectAlmacen';
-import { SelectTipoPapel } from './selectTipoPapel';
-
+import {Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Paper } from '@mui/material';
+import { SelectAlmacen, SelectTipoPapel, TableRows } from './index';
 
 //Definimos las columnas
 const columns = [
@@ -71,7 +61,6 @@ function createData(nameImpresora, numTrabajos, numAlmacen, tipo, ip) {
     return { nameImpresora, numTrabajos, numAlmacen, tipo, ip };
 }
 
-
 //Llamada a la funcion que genera las filas pasándole datos de relleno iniciales
 const rows = [
     createData('16ALAV101', 0, 'RG16', 'papel', '172.30.141.243'),
@@ -108,7 +97,6 @@ const rows = [
     createData('18ATTOM02', 0, 'RG18', 'papel', '172.30.120.244')
 ]
 
-
 //Funcion donde se definie la tabla con stickyhead
 export const StickyHeadTable = () => {
 
@@ -127,8 +115,8 @@ export const StickyHeadTable = () => {
         setPage(0);
     };
 
-
     const getImpresoras = useCallback(async () => {
+
         const res = await fetch('http://172.30.5.181:4444/impresoras');
         const newData = await res.json();
 
@@ -147,7 +135,7 @@ export const StickyHeadTable = () => {
                 }
             })
         });
-    },[data]) 
+    }, [data])
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -197,7 +185,7 @@ export const StickyHeadTable = () => {
     }
 
     return (
-        <>
+        <> 
             <div className="flexbox">
                 <img className="logo" src='../../images/LogoHefame.png'></img>
                 <SelectAlmacen
@@ -251,6 +239,7 @@ export const StickyHeadTable = () => {
         </>
     );
 }
+
 StickyHeadTable.propTypes = {
     data: PropTypes.array
 }

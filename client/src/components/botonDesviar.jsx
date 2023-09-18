@@ -1,11 +1,9 @@
-import { Button } from '@mui/material';
+import { Button, CircularProgress } from '@mui/material';
 import { useState} from 'react';
 import { AlertDialogDesviar } from './dialogDesviar';
 import styles from '../styles/loader.module.css';
 import AltRouteIcon from '@mui/icons-material/AltRoute';
 import PropTypes from 'prop-types';
-import CircularProgress from '@mui/material/CircularProgress';
-
 
 export const BotonDesviar = ({ printer }) => {
 
@@ -14,8 +12,8 @@ export const BotonDesviar = ({ printer }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [isDisabled, setDisabled] = useState(false);
 
-
-    const handleClick = async (printer) => {
+    //Revisamos el estado de la impresora y lo pasamos por prop a diálogo de desviar
+    const checkDesviada = async (printer) => {
 
         setDisabled(true);
         setIsLoading(true);
@@ -30,7 +28,6 @@ export const BotonDesviar = ({ printer }) => {
             const data = await res.json();
             console.log(data);
             setEstado(data);
-            // if(data) {setDisabled(false)}
         } catch (error) {
             console.log(error);
         } finally {
@@ -39,9 +36,9 @@ export const BotonDesviar = ({ printer }) => {
         }
 
     }
-
+    //Si pulsamos en desviar abrimos el dialog con la lista de impresoras disponibles para desviar
     const handleOpenDialog = async () => {
-        await handleClick(printer);
+        await checkDesviada(printer);
         setOpenDialog(true);
         setDisabled(false);
     };

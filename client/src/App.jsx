@@ -1,31 +1,29 @@
 import './App.css';
-
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-
-import { StickyHeadTable } from './components/tablas';
-import { SignIn } from './components/login';
+import { useState } from 'react';
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { StickyHeadTable, SignIn, Logout } from './components/';
 import { ProtectedRoute } from './components/utils/protectedRoute';
-import { useLocalStorage } from 'react-use';
-
 
 const App = () => {
 
-  const [isToken, setIsToken] = useLocalStorage('token');
-  console.log('Token:', isToken);
-
+  //Declaro los estados para ver si hay alguien logueado y le paso el estado a Logut y SignIn
+  const [isLogged, setIsLogged] = useState(() => {
+    const token = localStorage.getItem('token');
+    return token !== null;
+  });
+  
   return (
     <div>
       <BrowserRouter>
+         {isLogged && ( <Logout setIsLogged={setIsLogged} isLogged={isLogged} /> )}
         <Routes>
-          <Route path="/login" element={<SignIn />} />
-          <Route element={<ProtectedRoute canActivate={isToken} redirectPath='/impresoras' />}>
+          <Route element={<ProtectedRoute />}>
             <Route path="/impresoras" element={<StickyHeadTable />} />
           </Route>
-          {/* <Route index element={<App />} />
-        <Route path="dashboard" element={<Dashboard />} /> */}
+          <Route path="/login" element={<SignIn setIsLogged={setIsLogged}/>} />
+          <Route path="/" element={<Navigate to="login" />} />
         </Routes>
       </BrowserRouter>
-
     </div>
   );
 }

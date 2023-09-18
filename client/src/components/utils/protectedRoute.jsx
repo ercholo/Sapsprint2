@@ -1,20 +1,18 @@
 import { Navigate, Outlet } from "react-router-dom";
 import PropTypes from 'prop-types';
 
-export const ProtectedRoute = ({ canActivate, redirectPath = '/login' }) => {
-    console.log(canActivate)
+export const ProtectedRoute = () => {
 
-    const saved = localStorage.getItem("token");
-    console.log(saved)
+    const token = localStorage.getItem("token");
 
-    if (!canActivate) {
-        return <Navigate to={redirectPath} replace />
+    if (!token) {
+        return <Navigate to='/login' replace />
     }
     return <Outlet />;
 }
 
 ProtectedRoute.propTypes = {
-    canActivate: PropTypes.bool,
+    canActivate: PropTypes.string,
     redirectPath: PropTypes.string
 }
 

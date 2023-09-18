@@ -5,6 +5,7 @@ host + /login
 
 const { Router, response } = require('express');
 const { generarJWT, myAsyncAuthorizer } = require('../helpers/jwt')
+const { verifyToken } = require('../middlewares/validarJwt')
 
 const router = Router();
 
@@ -22,6 +23,7 @@ router.post('/', async (req, res = response) => {
             // Envía el token en la respuesta JSON
             res.json({
                 ok: true,
+                msg: "la autenticación se ha hecho correcta",
                 token
             });
         } else {
@@ -40,5 +42,8 @@ router.post('/', async (req, res = response) => {
         });
     }
 });
+
+
+router.get('/verificarToken', verifyToken);
 
 module.exports = router;

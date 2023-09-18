@@ -1,19 +1,9 @@
 import React, { useState, useEffect, useCallback, forwardRef } from 'react';
-import { BotonDesviaIpOriginal } from './botonDesviaIpOriginal';
-import { BotonCancelar } from './botonCancelarTrabajo';
-import { BotonPagPrueba } from './botonPagPrueba'
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import Slide from '@mui/material/Slide';
+import { BotonDesviaIpOriginal, BotonCancelar, BotonPagPrueba } from './index';
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Slide, AlertTitle, Snackbar } from '@mui/material/';
 import MuiAlert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
-import Snackbar from '@mui/material/Snackbar';
-import PropTypes from 'prop-types';
 import { blue } from '@mui/material/colors';
+import PropTypes from 'prop-types';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;

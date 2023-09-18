@@ -1,17 +1,9 @@
 
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Box from '@mui/material/Box';
+import { Link, Box, Checkbox, FormControlLabel, Avatar, Button, CssBaseline, TextField, Typography, Container } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 function Copyright(props) {
     return (
@@ -26,14 +18,33 @@ function Copyright(props) {
     );
 }
 
-// TODO remove, this demo shouldn't need to reset the theme.
-
 const defaultTheme = createTheme();
 
-export const SignIn = () => {
+const verificarToken = async () => {
+
+    //Pues eso, verifica si el token es correcto
+    try {
+
+        const token = localStorage.getItem('token')
+        const headers = { 'Authorization': `Bearer ${token}` };
+        const response = await fetch('http://172.30.5.181:4444/login/verificarToken', { headers })
+
+        const responseVerify = await response.json();
+        console.log(responseVerify);
+
+    } catch (error) {
+
+        console.log('Error a la hora de verificar el token', error)
+
+    }
+}
+
+//hace el login y recibe si está logueado de App.jsx
+export const SignIn = ({ setIsLogged }) => {
 
     const navigate = useNavigate();
 
+    //recibe los datos de la pantalla del login y hace el post al backend, ahí responde con el token y la primera verificación si la autenticación es correcta.    
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
@@ -41,29 +52,44 @@ export const SignIn = () => {
         //     email: data.get('email'),
         //     password: data.get('password'),
         // });
-        await fetch('http://172.30.5.181:4444/login/', {
-            method: 'POST',
-            body: JSON.stringify({
-                email: data.get('email'),
-                password: data.get('password'),
-            }),
-            headers: {
-                'Content-type': 'application/json; charsetrs=UTF-8',
-                // 'Authorization': 'Basic ' + btoa(data.get('email') + ':' + data.get('password'))
-            },
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-                localStorage.setItem('token', JSON.stringify(data.token));
-                // navigate('/impresoras'); 
-                // data.ok===true ? localStorage.setItem('token', data.token) : null;
-                data.ok===true ? navigate('/impresoras') : null;
-                
+        try {
+            const response = await fetch('http://172.30.5.181:4444/login/', {
+                method: 'POST',
+                body: JSON.stringify({
+                    email: data.get('email'),
+                    password: data.get('password'),
+                }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                    // 'Authorization': 'Basic ' + btoa(data.get('email') + ':' + data.get('password'))
+                },
             })
-            .catch((err) => {
-                console.log(err.message);
-            });
+            const responseLogin = await response.json();
+
+            console.log(responseLogin);
+
+
+            if (responseLogin.ok === true) {
+                await new Promise((resolve) => {
+                    localStorage.setItem('token', responseLogin.token);
+                    resolve();
+                });
+                console.log('getitem', localStorage.getItem('token'));
+                setIsLogged(true);
+                navigate('/impresoras');
+                verificarToken();
+
+            } else {
+
+                navigate('/login');
+                setIsLogged(false);
+                localStorage.removeItem('token');
+
+            }
+
+        } catch (err) {
+            console.error(err.message);
+        }
 
     };
 
@@ -91,7 +117,7 @@ export const SignIn = () => {
                             required
                             fullWidth
                             id="email"
-                            label="Email"
+                            label="User"
                             name="email"
                             autoComplete="email"
                             autoFocus
@@ -125,4 +151,8 @@ export const SignIn = () => {
             </Container>
         </ThemeProvider>
     );
+}
+
+SignIn.propTypes = {
+    setIsLogged: PropTypes.func
 }
