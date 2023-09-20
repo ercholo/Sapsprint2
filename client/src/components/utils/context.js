@@ -1,14 +1,11 @@
 import { useState, useContext, createContext } from "react";
 import PropTypes from 'prop-types';
 
-const AuthContext = createContext({
-    isLogged: false,
-    login: () => { },
-});
+const UserContext = createContext();
 
 
 export const useAuth = () => {
-    return useContext(AuthContext);
+    return useContext(UserContext);
 }
 
 export const AuthProvider = ({ children }) => {
@@ -17,16 +14,16 @@ export const AuthProvider = ({ children }) => {
         return token !== null;
     });
 
-    // const login = () => setIsLogged(true);
+    const [ user, setUser] = useState("");
 
     return (
-        <AuthContext.Provider value={{ isLogged }}>
+        <UserContext.Provider value={{ isLogged, user, setIsLogged, setUser }}>
             {children}
-        </AuthContext.Provider>
+        </UserContext.Provider>
     );
 };
 
-export default AuthContext;
+export default UserContext;
 
 AuthProvider.propTypes = {
     children: PropTypes.func,

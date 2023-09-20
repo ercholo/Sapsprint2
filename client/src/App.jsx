@@ -11,16 +11,18 @@ const App = () => {
     const token = localStorage.getItem('token');
     return token !== null;
   });
-  
+
+  const [user, setUser ] = useState("");
+
   return (
     <div>
       <BrowserRouter>
-         {isLogged && ( <Logout setIsLogged={setIsLogged} isLogged={isLogged} /> )}
+        {isLogged && (<Logout setIsLogged={setIsLogged} isLogged={isLogged} user={user} />)}
         <Routes>
           <Route element={<ProtectedRoute />}>
             <Route path="/impresoras" element={<StickyHeadTable />} />
           </Route>
-          <Route path="/login" element={<SignIn setIsLogged={setIsLogged}/>} />
+          <Route path="/login" element={<SignIn setIsLogged={setIsLogged} setUser={setUser} />} />
           <Route path="/" element={<Navigate to="login" />} />
         </Routes>
       </BrowserRouter>

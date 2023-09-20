@@ -1,4 +1,3 @@
-
 import { Link, Box, Checkbox, FormControlLabel, Avatar, Button, CssBaseline, TextField, Typography, Container } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -40,7 +39,7 @@ const verificarToken = async () => {
 }
 
 //hace el login y recibe si está logueado de App.jsx
-export const SignIn = ({ setIsLogged }) => {
+export const SignIn = ({ setIsLogged, setUser }) => {
 
     const navigate = useNavigate();
 
@@ -67,11 +66,11 @@ export const SignIn = ({ setIsLogged }) => {
             const responseLogin = await response.json();
 
             console.log(responseLogin);
-
-
+            
             if (responseLogin.ok === true) {
                 await new Promise((resolve) => {
                     localStorage.setItem('token', responseLogin.token);
+                    setUser(responseLogin.username)
                     resolve();
                 });
                 console.log('getitem', localStorage.getItem('token'));
@@ -154,5 +153,6 @@ export const SignIn = ({ setIsLogged }) => {
 }
 
 SignIn.propTypes = {
-    setIsLogged: PropTypes.func
+    setIsLogged: PropTypes.func,
+    setUser: PropTypes.func
 }

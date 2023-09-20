@@ -1,16 +1,19 @@
 import PropTypes from 'prop-types';
 import { useEffect, useCallback } from 'react';
-import IconButton from '@mui/material/IconButton';
-import LogoutIcon from '@mui/icons-material/Logout';
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
+// import IconButton from '@mui/material/IconButton';
+// import LogoutIcon from '@mui/icons-material/Logout';
+// import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
 import { useNavigate } from 'react-router-dom';
 
-export const Logout = ({ isLogged, setIsLogged, user }) => {
+export const LogoutNav = ({ isLogged, setIsLogged }) => {
 
     console.log('islogged', isLogged)
-    console.log('user', user)
     const navigate = useNavigate();
+    // let responseVerify = ""
 
-    const verificarToken = useCallback(async () => {
+    const verificarToken = useCallback( async () => {
 
         //Pues eso, verifica si el token es correcto
         try {
@@ -23,13 +26,14 @@ export const Logout = ({ isLogged, setIsLogged, user }) => {
 
                 const responseVerify = await response.json();
                 console.log(responseVerify);
+                
 
-                if (responseVerify.ok === false) {
-                    handleClick();
+                if ( responseVerify.ok === false) {
+                    onLogout();
                 }
 
             } else {
-                handleClick();
+                onLogout();
             }
 
         } catch (error) {
@@ -51,7 +55,7 @@ export const Logout = ({ isLogged, setIsLogged, user }) => {
     }, [isLogged, verificarToken]);
 
 
-    const handleClick = async () => {
+    const onLogout = async () => {
 
         try {
 
@@ -66,25 +70,22 @@ export const Logout = ({ isLogged, setIsLogged, user }) => {
     }
 
     return (
-        <>
-        <div className="logout-container">
-            <IconButton
-                aria-label="logout"
-                size="large"
-                sx={{ color: 'red', mt: '100' }}
-                onClick={handleClick}>
-                <LogoutIcon fontSize="inherit" />
-            </IconButton>
-            {/* Bienvenido:  {responseVerify.username} */}     
-            <h3>Signed in as: {user}</h3>
-        </div>
-        </>
-    )
+        <Navbar className="bg-body-tertiary">
+          <Container>
+            <Navbar.Brand href="#home">Navbar with text</Navbar.Brand>
+            <Navbar.Toggle />
+            <Navbar.Collapse className="ml-auto">
+              <Navbar.Text>
+                Signed in as: Mark Otto
+              </Navbar.Text>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
+      );
 }
 
-Logout.propTypes = {
-    isLogged: PropTypes.bool,
-    setIsLogged: PropTypes.func,
-    user: PropTypes.string,
 
+LogoutNav.propTypes = {
+    isLogged: PropTypes.bool,
+    setIsLogged: PropTypes.func
 }

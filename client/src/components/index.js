@@ -13,9 +13,3 @@ export * from './login';
 export * from './logout';
 export * from './botonReanudar';
 export * from './botonesPausa';
-
-
-
-
-
-
